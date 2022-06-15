@@ -34,6 +34,11 @@ public class PlayerPrefsSavingLoading : MonoBehaviour
         PlayerPrefs.SetFloat(_name, _value);
     }
 
+    public void SaveString(string _name, string _value)
+    {
+        PlayerPrefs.SetString(_name, _value);
+    }
+
     public int LoadInt(string _name)
     {
         if (PlayerPrefs.HasKey(_name))
@@ -69,4 +74,22 @@ public class PlayerPrefsSavingLoading : MonoBehaviour
             return 0f;
         }
     }
+
+    public string LoadString(string _name)
+    {
+        if (PlayerPrefs.HasKey(_name))
+        {
+            return PlayerPrefs.GetString(_name);
+        }
+        else
+        {
+            return string.Empty;
+        }
+    }
+
+    public void DeleteAllKeys()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
 }

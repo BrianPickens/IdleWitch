@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
 
     private float currentCandyDuration;
 
-    private float totalSouls;
+    private int totalSouls;
 
     private bool candyOut;
 
@@ -35,9 +35,14 @@ public class GameController : MonoBehaviour
 
     private TimeSpan currentCandyTimeSpan;
 
+    [SerializeField] private List<SoulsObject> allAttractions = new List<SoulsObject>();
+
 
     private void Start()
     {
+
+
+
         //
         currentSoulCapacity = baseSoulCapacity;
         currentSoulGatherAmount = baseSoulGatherAmount;
@@ -48,13 +53,27 @@ public class GameController : MonoBehaviour
 
         InitializeActions();
 
+        InitializeAttractions();
+
         LoadData();
 
     }
 
+    private void InitializeAttractions()
+    {
+        for (int i = 0; i < allAttractions.Count; i++)
+        {
+            allAttractions[i].Initialize();
+        }
+    }
+
     private void InitializeActions()
     {
-        gameUI.OnCollectPressed = CollectGatheredSouls;
+        for (int i = 0; i < allAttractions.Count; i++)
+        {
+            allAttractions[i].OnCollectSouls = CollectGatheredSouls;
+        }
+
         gameUI.OnCandyPressed = RefreshCandy;
     }
 
@@ -70,7 +89,7 @@ public class GameController : MonoBehaviour
 
     private void LoadData()
     {
-
+        totalSouls = PlayerPrefsSavingLoading.Instance.LoadInt(ConstantStrings.totalSouls);
     }
 
     private void RunSoulGatherTimer()
@@ -100,14 +119,17 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void CollectGatheredSouls()
+    private void CollectGatheredSouls(int _numSouls)
     {
-        if (currentGatheredSouls > 0f)
-        {
-            totalSouls += currentGatheredSouls;
-            currentGatheredSouls = 0f;
-            lastSoulCollectionTime = DateTime.Now;
-        }
+        totalSouls += _numSouls;
+        PlayerPrefsSavingLoading.Instance.SaveInt(ConstantStrings.totalSouls, totalSouls);
+
+        //if (currentGatheredSouls > 0f)
+        //{
+        //    totalSouls += currentGatheredSouls;
+        //    currentGatheredSouls = 0f;
+        //    lastSoulCollectionTime = DateTime.Now;
+        //}
     }
 
     private void RefreshCandy()
@@ -138,5 +160,12 @@ public class GameController : MonoBehaviour
         gameUI.UpdateGatherableSoulsDiplay(currentGatheredSouls, currentSoulCapacity);
         gameUI.UpdateCandyOutDisplay(candyOut, currentCandyTimeSpan.Hours, currentCandyTimeSpan.Minutes, currentCandyTimeSpan.Seconds);
 
+    }
+
+
+    //debug
+    public void ClearData()
+    {
+        PlayerPrefsSavingLoading.Instance.DeleteAllKeys();
     }
 }

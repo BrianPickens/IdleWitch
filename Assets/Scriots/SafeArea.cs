@@ -15,9 +15,9 @@ public class SafeArea : MonoBehaviour
         safeArea = Screen.safeArea;
         minAnchor = safeArea.position;
         maxAnchor = minAnchor + safeArea.size;
-        Debug.LogError(rectTransform.rect.height);
-        Debug.LogError(rectTransform.rect.width);
-        Debug.LogError(safeArea.size);
+        //Debug.LogError(rectTransform.rect.height);
+        //Debug.LogError(rectTransform.rect.width);
+        //Debug.LogError(safeArea.size);
 
         minAnchor.x /= Screen.width;
         minAnchor.y /= Screen.height;
