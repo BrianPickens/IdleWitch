@@ -8,20 +8,13 @@ using System;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI totalSoulsDisplay;
-    [SerializeField] private TextMeshProUGUI soulsGatheredDisplay;
     [SerializeField] private TextMeshProUGUI candyOutDisplay;
 
-    public Action OnCollectPressed;
     public Action OnCandyPressed;
 
     public void UpdateTotalSoulsDisplay(float _numSouls)
     {
         totalSoulsDisplay.text = Mathf.RoundToInt(_numSouls).ToString();
-    }
-
-    public void UpdateGatherableSoulsDiplay(float _numGathered, float _maxGatherable)
-    {
-        soulsGatheredDisplay.text = Mathf.RoundToInt(_numGathered).ToString() + " / " + Mathf.RoundToInt(_maxGatherable).ToString();
     }
 
     public void UpdateCandyOutDisplay(bool _candyOut, int _hours, int _minutes, int _seconds)
@@ -69,14 +62,11 @@ public class GameUI : MonoBehaviour
 
     }
 
-    public void OnCollectSoulsPressed()
-    {
-        OnCollectPressed?.Invoke();
-    }
-
     public void OnRefreshCandyPressed()
     {
         OnCandyPressed?.Invoke();
     }
+
+
 
 }

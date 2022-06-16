@@ -55,6 +55,18 @@ public class SoulsObject : MonoBehaviour
                 builtObjects[i].SetActive(true);
             }
         }
+        else
+        {
+            for (int i = 0; i < nonBuiltObjects.Count; i++)
+            {
+                nonBuiltObjects[i].SetActive(true);
+            }
+
+            for (int i = 0; i < builtObjects.Count; i++)
+            {
+                builtObjects[i].SetActive(false);
+            }
+        }
 
         if (PlayerPrefsSavingLoading.Instance.LoadString(ID + ConstantStrings.collectionTime) != string.Empty)
         {
