@@ -90,10 +90,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fc49c85029f5542ad760f1a24ddb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myItemType: 0
   soulCapacity: 20
   soulGatherTime: 2
   soulGatherAmount: 1
   soulsDisplay: {fileID: 4478186683584167273}
+  nonBuiltObjects: []
+  builtObjects: []
+  startBuilt: 0
 --- !u!114 &4478186683420907436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,10 +246,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

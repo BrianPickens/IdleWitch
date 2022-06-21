@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private List<SoulsObject> allAttractions = new List<SoulsObject>();
 
+    [SerializeField] private Menu constructionMenu;
+    [SerializeField] private Menu detectionMenu;
+    [SerializeField] private Menu offersMenu;
 
     private void Start()
     {
@@ -27,6 +30,8 @@ public class GameController : MonoBehaviour
         InitializeActions();
 
         InitializeAttractions();
+
+        InitializeMenus();
 
         LoadData();
 
@@ -48,6 +53,13 @@ public class GameController : MonoBehaviour
         }
 
         gameUI.OnCandyPressed = RefreshCandy;
+    }
+
+    private void InitializeMenus()
+    {
+        constructionMenu.InitializeMenu(OnPurchase);
+        detectionMenu.InitializeMenu(OnPurchase);
+        offersMenu.InitializeMenu(OnPurchase);
     }
 
     private void Update()
@@ -93,7 +105,22 @@ public class GameController : MonoBehaviour
     {
         gameUI.UpdateTotalSoulsDisplay(totalSouls);
         gameUI.UpdateCandyOutDisplay(candyOut, currentCandyTimeSpan.Hours, currentCandyTimeSpan.Minutes, currentCandyTimeSpan.Seconds);
+        constructionMenu.UpdateButtons(totalSouls);
+        detectionMenu.UpdateButtons(totalSouls);
+        offersMenu.UpdateButtons(totalSouls);
+    }
 
+    private void OnPurchase(int _purchasePrice, string _ID)
+    {
+        totalSouls -= _purchasePrice;
+        for (int i = 0; i < allAttractions.Count; i++)
+        {
+            if (allAttractions[i].GetID() == _ID)
+            {
+                allAttractions[i].BuildAttraction();
+                break;
+            }
+        }
     }
 
 

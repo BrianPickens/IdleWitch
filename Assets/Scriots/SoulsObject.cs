@@ -11,6 +11,8 @@ public class SoulsObject : MonoBehaviour
 
     private bool isBoosted;
 
+    [SerializeField] private PurchaseItemType myItemType;
+
     [SerializeField] private float soulCapacity;
     [SerializeField] private float soulGatherTime;
     [SerializeField] private float soulGatherAmount;
@@ -23,11 +25,10 @@ public class SoulsObject : MonoBehaviour
 
     public Action<int> OnCollectSouls;
 
-    [SerializeField] private string ID;
-
     [SerializeField] private List<GameObject> nonBuiltObjects = new List<GameObject>();
     [SerializeField] private List<GameObject> builtObjects = new List<GameObject>();
 
+    [SerializeField] private bool startBuilt;
 
     private void Update()
     {
@@ -41,7 +42,13 @@ public class SoulsObject : MonoBehaviour
 
     public void Initialize()
     {
-        isBuilt = PlayerPrefsSavingLoading.Instance.LoadBool(ID + ConstantStrings.built);
+        isBuilt = PlayerPrefsSavingLoading.Instance.LoadBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.built);
+
+        if (!isBuilt && startBuilt)
+        {
+            BuildAttraction();
+        }
+
 
         if (isBuilt)
         {
@@ -68,23 +75,37 @@ public class SoulsObject : MonoBehaviour
             }
         }
 
-        if (PlayerPrefsSavingLoading.Instance.LoadString(ID + ConstantStrings.collectionTime) != string.Empty)
+        if (PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime) != string.Empty)
         {
-            long temp = Convert.ToInt64(PlayerPrefsSavingLoading.Instance.LoadString(ID + ConstantStrings.collectionTime));
+            long temp = Convert.ToInt64(PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime));
             lastCollection = DateTime.FromBinary(temp);
         }
         else
         {
             lastCollection = DateTime.Now;
-            PlayerPrefsSavingLoading.Instance.SaveString(ID + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
+            PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
 
         }
     }
 
-    private void BuildAttraction()
+    public void BuildAttraction()
     {
+        Debug.LogError(ConstantStrings.Instance.GetDisplayName(myItemType) + "Built");
+
+        for (int i = 0; i < nonBuiltObjects.Count; i++)
+        {
+            nonBuiltObjects[i].SetActive(false);
+        }
+
+        for (int i = 0; i < builtObjects.Count; i++)
+        {
+            builtObjects[i].SetActive(true);
+        }
+
+        isBuilt = true;
         lastCollection = DateTime.Now;
-        PlayerPrefsSavingLoading.Instance.SaveString(ID + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
+        PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
+        PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.built, true);
 
     }
 
@@ -129,13 +150,18 @@ public class SoulsObject : MonoBehaviour
             OnCollectSouls?.Invoke(Mathf.FloorToInt(currentGatheredSouls));
             currentGatheredSouls = 0f;
             lastCollection = DateTime.Now;
-            PlayerPrefsSavingLoading.Instance.SaveString(ID + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
+            PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
         }
         else
         {
             //nothign to gather
         }
 
+    }
+
+    public string GetID()
+    {
+        return ConstantStrings.Instance.GetItemID(myItemType);
     }
 
 
