@@ -8,17 +8,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private GameUI gameUI;
 
-    [SerializeField] private float baseCandyDuration;//in seconds;
-
     private int totalSouls;
 
-    private bool candyOut;
-
-    private DateTime nextCandyRefreshTime;
-
-    private TimeSpan currentCandyTimeSpan;
-
-    [SerializeField] private List<SoulsObject> allAttractions = new List<SoulsObject>();
+    [SerializeField] private List<SoulsObjectBase> allAttractions = new List<SoulsObjectBase>();
 
     [SerializeField] private Menu constructionMenu;
     [SerializeField] private Menu detectionMenu;
@@ -47,12 +39,14 @@ public class GameController : MonoBehaviour
 
     private void InitializeActions()
     {
-        for (int i = 0; i < allAttractions.Count; i++)
+        foreach (SoulsObjectBase attraction in allAttractions)
         {
-            allAttractions[i].OnCollectSouls = CollectGatheredSouls;
+            if (attraction.GetComponent<SoulsObjectAttraction>() != null)
+            {
+                attraction.GetComponent<SoulsObjectAttraction>().OnCollectSouls = CollectGatheredSouls;
+            }
+            
         }
-
-        gameUI.OnCandyPressed = RefreshCandy;
     }
 
     private void InitializeMenus()
@@ -64,7 +58,6 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        RunCandyTimer();
         UpdateUI();
     }
 
@@ -79,32 +72,9 @@ public class GameController : MonoBehaviour
         PlayerPrefsSavingLoading.Instance.SaveInt(ConstantStrings.totalSouls, totalSouls);
     }
 
-    private void RefreshCandy()
-    {
-        if (!candyOut)
-        {
-            DateTime nextRefresh = DateTime.Now;
-            nextRefresh = nextRefresh.AddSeconds(baseCandyDuration);
-            nextCandyRefreshTime = nextRefresh;
-            candyOut = true;
-        }
-        
-    }
-
-    private void RunCandyTimer()
-    {
-        currentCandyTimeSpan = nextCandyRefreshTime - DateTime.Now;
-        if (currentCandyTimeSpan.Seconds < 0)
-        {
-            candyOut = false;
-        }
-    }
-
-
     private void UpdateUI()
     {
         gameUI.UpdateTotalSoulsDisplay(totalSouls);
-        gameUI.UpdateCandyOutDisplay(candyOut, currentCandyTimeSpan.Hours, currentCandyTimeSpan.Minutes, currentCandyTimeSpan.Seconds);
         constructionMenu.UpdateButtons(totalSouls);
         detectionMenu.UpdateButtons(totalSouls);
         offersMenu.UpdateButtons(totalSouls);

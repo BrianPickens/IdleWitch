@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PurchaseItemType { CandyBasket1, CandyBasket2, CandySign, BigCauldron, CandifyHouse1, CandifyHouse2, HouseExpansion1,
     HouseExpansion2, BallPit, Drones, Pony, Arcade, TRex, Pool, NeonSign, RockConcert, RollerCoaster,
-    WitchBroom, McDonalds, CandySmells, DuckFeet, FreePuppies, Balloons, BaseCauldron }
+    WitchBroom, McDonalds, CandySmells, DuckFeet, FreePuppies, Balloons, BaseCauldron, BaseHouse }
 
 public class ConstantStrings : MonoBehaviour
 {
@@ -55,6 +55,7 @@ public class ConstantStrings : MonoBehaviour
     private string freePuppiesID = "freePuppies";
     private string balloonsID = "balloons";
     private string baseCauldronID = "baseCauldron";
+    private string baseHouseID = "baseHouse";
 
     [SerializeField] private string candyBasket1Name = "candyBasket1";
     [SerializeField] private string candyBasket2Name = "candyBasket2";
@@ -80,6 +81,7 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private string freePuppiesName = "freePuppies";
     [SerializeField] private string balloonsName = "balloons";
     [SerializeField] private string baseCauldronName = "baseCauldron";
+    [SerializeField] private string baseHouseName = "baseHouse";
 
     public string GetDisplayName(PurchaseItemType _type)
     {
@@ -181,6 +183,10 @@ public class ConstantStrings : MonoBehaviour
 
             case PurchaseItemType.BaseCauldron:
                 displayNameString = baseCauldronName;
+                break;
+
+            case PurchaseItemType.BaseHouse:
+                displayNameString = baseHouseName;
                 break;
 
             default:
@@ -290,7 +296,11 @@ public class ConstantStrings : MonoBehaviour
                 break;
 
             case PurchaseItemType.BaseCauldron:
-                itemID = baseCauldronName;
+                itemID = baseCauldronID;
+                break;
+
+            case PurchaseItemType.BaseHouse:
+                itemID = baseHouseID;
                 break;
 
             default:

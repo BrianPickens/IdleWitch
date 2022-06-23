@@ -8,65 +8,11 @@ using System;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI totalSoulsDisplay;
-    [SerializeField] private TextMeshProUGUI candyOutDisplay;
 
-    public Action OnCandyPressed;
 
     public void UpdateTotalSoulsDisplay(float _numSouls)
     {
         totalSoulsDisplay.text = Mathf.RoundToInt(_numSouls).ToString();
     }
-
-    public void UpdateCandyOutDisplay(bool _candyOut, int _hours, int _minutes, int _seconds)
-    {
-        if (_candyOut)
-        {
-
-            string timerText = string.Empty;
-
-            if (_hours > 0)
-            {
-                timerText += _hours.ToString() + ":";
-            }
-
-            if (_minutes == 0 && _hours > 0)
-            {
-                timerText += _minutes.ToString() + ":";
-            }
-            else if (_minutes > 0)
-            {
-                timerText += _minutes.ToString() + ":";
-            }
-
-            if (_seconds == 0 && _hours > 0 || _seconds == 0 && _minutes > 0)
-            {
-                timerText += _seconds.ToString() + ":";
-            }
-            else if (_seconds > 0)
-            {
-                timerText += _seconds.ToString();
-            }
-
-            if (string.IsNullOrEmpty(timerText))
-            {
-                timerText = "0";
-            }
-
-
-            candyOutDisplay.text = timerText;
-        }
-        else
-        {
-            candyOutDisplay.text = "Refill Candy";
-        }
-
-    }
-
-    public void OnRefreshCandyPressed()
-    {
-        OnCandyPressed?.Invoke();
-    }
-
-
 
 }
