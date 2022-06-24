@@ -1,49 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4710223560931221733
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6315115658041424903}
-  - component: {fileID: 1246408762907105298}
-  m_Layer: 5
-  m_Name: CauldronBase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6315115658041424903
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4710223560931221733}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4672507695815955737}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1246408762907105298
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4710223560931221733}
-  m_CullTransparentMesh: 1
 --- !u!1 &6405770763394163040
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +11,7 @@ GameObject:
   - component: {fileID: 4123864978734500541}
   - component: {fileID: 1238626326227911243}
   m_Layer: 5
-  m_Name: BigCauldron1
+  m_Name: BigCauldron1Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,6 +51,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2815091366287964147, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8152432445404826586, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -184,6 +144,14 @@ PrefabInstance:
       value: BaseCauldron(Attraction)
       objectReference: {fileID: 0}
     - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: myItemType
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: startBuilt
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: myUpgrades.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -195,10 +163,6 @@ PrefabInstance:
       propertyPath: upgradeLevelDisplays.Array.size
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
-      propertyPath: upgradeLevelDisplays.Array.data[0]
-      value: 
-      objectReference: {fileID: 4710223560931221733}
     - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: upgradeLevelDisplays.Array.data[1]
       value: 
@@ -243,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 4170307101982548287}
     - target: {fileID: 6490902325104150380, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
       propertyPath: m_Name
-      value: AttractionUpgrade
+      value: BigCauldron1
       objectReference: {fileID: 0}
     - target: {fileID: 6490902325104150381, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
       propertyPath: m_Pivot.x

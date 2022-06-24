@@ -42,8 +42,6 @@ public class SoulsObjectAttraction : SoulsObjectBase
     {
         base.Initialize();
 
-        Debug.LogError("initializeTest");
-
         if (PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime) != string.Empty)
         {
             long temp = Convert.ToInt64(PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime));

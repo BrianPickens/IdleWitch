@@ -21,12 +21,17 @@ public class SoulsObjectBase : MonoBehaviour
         {
             BuildAttraction();
         }
+        else if (!isBuilt)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public virtual void BuildAttraction()
     {
         Debug.LogError(ConstantStrings.Instance.GetDisplayName(myItemType) + "Built");
 
+        gameObject.SetActive(true);
         isBuilt = true;
         PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.built, true);
 
