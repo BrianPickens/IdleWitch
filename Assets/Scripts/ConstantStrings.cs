@@ -63,8 +63,6 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private string bigCauldronName = "bigCauldron";
     [SerializeField] private string candifyHouse1Name = "candifyHouse1";
     [SerializeField] private string candifyHouse2Name = "candifyHouse2";
-    [SerializeField] private string houseExpansion1Name = "houseExpansion1";
-    [SerializeField] private string houseExpansion2Name = "houseExpansion2";
     [SerializeField] private string ballPitName = "ballPit";
     [SerializeField] private string dronesName = "drones";
     [SerializeField] private string ponyName = "pony";
@@ -82,6 +80,30 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private string balloonsName = "balloons";
     [SerializeField] private string baseCauldronName = "baseCauldron";
     [SerializeField] private string baseHouseName = "baseHouse";
+
+    [SerializeField] private int candyBasket1Price = 20;
+    [SerializeField] private int candyBasket2Price = 20;
+    [SerializeField] private int candySignPrice = 20;
+    [SerializeField] private int bigCauldronPrice = 20;
+    [SerializeField] private int candifyHouse1Price = 20;
+    [SerializeField] private int candifyHouse2Price = 20;
+    [SerializeField] private int ballPitPrice = 20;
+    [SerializeField] private int dronesPrice = 20;
+    [SerializeField] private int ponyPrice = 20;
+    [SerializeField] private int arcadePrice = 20;
+    [SerializeField] private int tRexPrice = 20;
+    [SerializeField] private int poolPrice = 20;
+    [SerializeField] private int neonSignPrice = 20;
+    [SerializeField] private int rockConcertPrice = 20;
+    [SerializeField] private int rollerCoasterPrice = 20;
+    [SerializeField] private int witchBroomPrice = 20;
+    [SerializeField] private int mcDonaldsPrice = 20;
+    [SerializeField] private int candySmellsPrice = 20;
+    [SerializeField] private int duckFeetPrice = 20;
+    [SerializeField] private int freePuppiesPrice = 20;
+    [SerializeField] private int balloonsPrice = 20;
+    [SerializeField] private int baseCauldronPrice = 20;
+    [SerializeField] private int baseHousePrice = 20;
 
     public string GetDisplayName(PurchaseItemType _type)
     {
@@ -111,14 +133,6 @@ public class ConstantStrings : MonoBehaviour
 
             case PurchaseItemType.CandifyHouse2:
                 displayNameString = candifyHouse2Name;
-                break;
-
-            case PurchaseItemType.HouseExpansion1:
-                displayNameString = houseExpansion1Name;
-                break;
-
-            case PurchaseItemType.HouseExpansion2:
-                displayNameString = houseExpansion2Name;
                 break;
 
             case PurchaseItemType.BallPit:
@@ -227,14 +241,6 @@ public class ConstantStrings : MonoBehaviour
                 itemID = candifyHouse2ID;
                 break;
 
-            case PurchaseItemType.HouseExpansion1:
-                itemID = houseExpansion1ID;
-                break;
-
-            case PurchaseItemType.HouseExpansion2:
-                itemID = houseExpansion2ID;
-                break;
-
             case PurchaseItemType.BallPit:
                 itemID = ballPitID;
                 break;
@@ -311,4 +317,109 @@ public class ConstantStrings : MonoBehaviour
         return itemID;
     }
 
+    public int GetItemPrice(PurchaseItemType _type)
+    {
+        int itemPrice = 0;
+
+        switch (_type)
+        {
+            case PurchaseItemType.CandyBasket1:
+                itemPrice = candyBasket1Price;
+                break;
+
+            case PurchaseItemType.CandyBasket2:
+                itemPrice = candyBasket2Price;
+                break;
+
+            case PurchaseItemType.CandySign:
+                itemPrice = candySignPrice;
+                break;
+
+            case PurchaseItemType.BigCauldron:
+                itemPrice = bigCauldronPrice;
+                break;
+
+            case PurchaseItemType.CandifyHouse1:
+                itemPrice = candifyHouse1Price;
+                break;
+
+            case PurchaseItemType.CandifyHouse2:
+                itemPrice = candifyHouse2Price;
+                break;
+
+            case PurchaseItemType.BallPit:
+                itemPrice = ballPitPrice;
+                break;
+
+            case PurchaseItemType.Drones:
+                itemPrice = dronesPrice;
+                break;
+
+            case PurchaseItemType.Pony:
+                itemPrice = ponyPrice;
+                break;
+
+            case PurchaseItemType.Arcade:
+                itemPrice = arcadePrice;
+                break;
+
+            case PurchaseItemType.TRex:
+                itemPrice = tRexPrice;
+                break;
+
+            case PurchaseItemType.Pool:
+                itemPrice = poolPrice;
+                break;
+
+            case PurchaseItemType.NeonSign:
+                itemPrice = neonSignPrice;
+                break;
+
+            case PurchaseItemType.RockConcert:
+                itemPrice = rockConcertPrice;
+                break;
+
+            case PurchaseItemType.RollerCoaster:
+                itemPrice = rollerCoasterPrice;
+                break;
+
+            case PurchaseItemType.WitchBroom:
+                itemPrice = witchBroomPrice;
+                break;
+
+            case PurchaseItemType.McDonalds:
+                itemPrice = mcDonaldsPrice;
+                break;
+
+            case PurchaseItemType.CandySmells:
+                itemPrice = candySmellsPrice;
+                break;
+
+            case PurchaseItemType.DuckFeet:
+                itemPrice = duckFeetPrice;
+                break;
+
+            case PurchaseItemType.FreePuppies:
+                itemPrice = freePuppiesPrice;
+                break;
+
+            case PurchaseItemType.Balloons:
+                itemPrice = balloonsPrice;
+                break;
+
+            case PurchaseItemType.BaseCauldron:
+                itemPrice = baseCauldronPrice;
+                break;
+
+            case PurchaseItemType.BaseHouse:
+                itemPrice = baseHousePrice;
+                break;
+
+            default:
+                itemPrice = 0;
+                break;
+        }
+
+        return itemPrice;
+    }
 }

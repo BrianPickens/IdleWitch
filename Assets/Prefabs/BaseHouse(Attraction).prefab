@@ -385,6 +385,10 @@ PrefabInstance:
       propertyPath: myBaseAttraction
       value: 
       objectReference: {fileID: 5625112011494210774}
+    - target: {fileID: 3344625433930895397, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
+      propertyPath: soulGatherTimeIncrease
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6490902325104150380, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
       propertyPath: m_Name
       value: CandifyHouse1
@@ -505,6 +509,10 @@ PrefabInstance:
       propertyPath: myBaseAttraction
       value: 
       objectReference: {fileID: 5625112011494210774}
+    - target: {fileID: 3344625433930895397, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
+      propertyPath: soulGatherTimeIncrease
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6490902325104150380, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
       propertyPath: m_Name
       value: DuckFeet
@@ -625,6 +633,10 @@ PrefabInstance:
       propertyPath: myBaseAttraction
       value: 
       objectReference: {fileID: 5625112011494210774}
+    - target: {fileID: 3344625433930895397, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
+      propertyPath: soulGatherTimeIncrease
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6490902325104150380, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
       propertyPath: m_Name
       value: CandifyHouse2
@@ -745,6 +757,10 @@ PrefabInstance:
       propertyPath: myBaseAttraction
       value: 
       objectReference: {fileID: 5625112011494210774}
+    - target: {fileID: 3344625433930895397, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
+      propertyPath: soulGatherTimeIncrease
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6490902325104150380, guid: 68436ed899ef2284d94b71c2e6e7a229, type: 3}
       propertyPath: m_Name
       value: CandySmells

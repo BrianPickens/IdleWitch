@@ -17,6 +17,7 @@ public class PurchaseButton : MonoBehaviour
     [SerializeField] private Button myButton;
 
     [SerializeField] private TextMeshProUGUI displayText;
+    [SerializeField] private TextMeshProUGUI requirementText;
 
     [SerializeField] private List<PurchaseButton> prerequisites = new List<PurchaseButton>();
 
@@ -44,32 +45,38 @@ public class PurchaseButton : MonoBehaviour
         if (isBuilt)
         {
             myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType) + " - " + "Purchased!";
+            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+            requirementText.text = "Purchased!";
         }
         else if (!isBuilt && _currentSouls >= purchasePrice && PrerequisitesBuilt())
         {
             myButton.interactable = true;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType) + " - " + purchasePrice;
+            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+            requirementText.text = purchasePrice.ToString();
         }
         else if (!isBuilt && _currentSouls >= purchasePrice && !PrerequisitesBuilt())
         {
             myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType) + " - " + "requires: " + GetPrerequisiteName();
+            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+            requirementText.text = "Requires: " + GetPrerequisiteName();
         }
         else if (!isBuilt && _currentSouls < purchasePrice && PrerequisitesBuilt())
         {
             myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType) + " - " + purchasePrice;
+            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+            requirementText.text = purchasePrice.ToString();
         }
         else if (!isBuilt && _currentSouls < purchasePrice && !PrerequisitesBuilt())
         {
             myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType) + " - " + "requires: " + GetPrerequisiteName();
+            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+            requirementText.text = "Requires: " + GetPrerequisiteName();
         }
         else
         {
             myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType) + " - " + purchasePrice;
+            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+            requirementText.text = purchasePrice.ToString();
         }
     }
 
