@@ -23,7 +23,7 @@ public class SoulsObjectBase : MonoBehaviour
         }
         else if (!isBuilt)
         {
-            gameObject.SetActive(false);
+            
         }
     }
 
@@ -31,7 +31,6 @@ public class SoulsObjectBase : MonoBehaviour
     {
         Debug.LogError(ConstantStrings.Instance.GetDisplayName(myItemType) + "Built");
 
-        gameObject.SetActive(true);
         isBuilt = true;
         PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.built, true);
 

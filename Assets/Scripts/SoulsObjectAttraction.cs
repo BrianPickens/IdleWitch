@@ -13,6 +13,8 @@ public class SoulsObjectAttraction : SoulsObjectBase
     [SerializeField] private float soulGatherTime;
     [SerializeField] private float soulGatherAmount;
 
+    [SerializeField] private GameObject soulsDisplayHolder;
+
     [SerializeField] private TextMeshProUGUI soulsDisplay;
 
     private float currentGatheredSouls;
@@ -22,6 +24,8 @@ public class SoulsObjectAttraction : SoulsObjectBase
     public Action<int> OnCollectSouls;
 
     [SerializeField] private List<SoulsObjectUpgrade> myUpgrades = new List<SoulsObjectUpgrade>();
+
+    [SerializeField] private GameObject displayHolder;
 
     [SerializeField] private List<GameObject> upgradeLevelDisplays = new List<GameObject>();
 
@@ -53,12 +57,22 @@ public class SoulsObjectAttraction : SoulsObjectBase
             PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
 
         }
+
+        if (!isBuilt)
+        {
+            treesToClear.SetActive(true);
+            soulsDisplayHolder.SetActive(false);
+            displayHolder.SetActive(false);
+        }
+
     }
 
     public override void BuildAttraction()
     {
         base.BuildAttraction();
         ClearTrees();
+        soulsDisplayHolder.SetActive(true);
+        displayHolder.SetActive(true);
         ShowUpgradeLevel(0);
         lastCollection = DateTime.Now;
         PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());

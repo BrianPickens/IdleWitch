@@ -389,7 +389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7c7d45aabd38a67469707e5ea4d85d7d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -600,8 +600,10 @@ MonoBehaviour:
   soulCapacity: 20
   soulGatherTime: 2
   soulGatherAmount: 1
+  soulsDisplayHolder: {fileID: 1801649548880247688}
   soulsDisplay: {fileID: 8152432445147472155}
   myUpgrades: []
+  displayHolder: {fileID: 9021917883597664517}
   upgradeLevelDisplays:
   - {fileID: 4459717979978188750}
   treesToClear: {fileID: 3513474005712047631}
