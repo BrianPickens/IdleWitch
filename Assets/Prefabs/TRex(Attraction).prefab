@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3625411547095219848, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625411547095219848, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6880545521519673131, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5ba3808389238488999eca485e67366b, type: 3}
     - target: {fileID: 8152432445404826586, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -99,5 +111,25 @@ PrefabInstance:
       propertyPath: myItemType
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 8622736421590514363, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622736421590514363, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622736421590514363, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622736421590514363, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722987066058037117, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c2c7060b0dacd430f824b9c829d68e03, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba99b826086e0b749939d01a906f3289, type: 3}
