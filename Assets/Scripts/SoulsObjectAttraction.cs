@@ -31,7 +31,6 @@ public class SoulsObjectAttraction : SoulsObjectBase
 
     [SerializeField] private GameObject treesToClear;
 
-
     private void Update()
     {
         if (isBuilt)
@@ -63,6 +62,12 @@ public class SoulsObjectAttraction : SoulsObjectBase
             treesToClear.SetActive(true);
             soulsDisplayHolder.SetActive(false);
             displayHolder.SetActive(false);
+        }
+        else
+        {
+            ClearTrees();
+            soulsDisplayHolder.SetActive(true);
+            displayHolder.SetActive(true);
         }
 
     }

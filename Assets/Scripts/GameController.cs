@@ -12,9 +12,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private List<SoulsObjectBase> allAttractions = new List<SoulsObjectBase>();
 
-    [SerializeField] private Menu constructionMenu;
-    [SerializeField] private Menu detectionMenu;
-    [SerializeField] private Menu offersMenu;
+    [SerializeField] private Menus allMenus;
+
 
     private void Start()
     {
@@ -51,9 +50,7 @@ public class GameController : MonoBehaviour
 
     private void InitializeMenus()
     {
-        constructionMenu.InitializeMenu(OnPurchase);
-        detectionMenu.InitializeMenu(OnPurchase);
-        offersMenu.InitializeMenu(OnPurchase);
+        allMenus.InitializeMenus(OnPurchase);
     }
 
     private void Update()
@@ -75,9 +72,7 @@ public class GameController : MonoBehaviour
     private void UpdateUI()
     {
         gameUI.UpdateTotalSoulsDisplay(totalSouls);
-        constructionMenu.UpdateButtons(totalSouls);
-        detectionMenu.UpdateButtons(totalSouls);
-        offersMenu.UpdateButtons(totalSouls);
+        allMenus.UpdateButtons(totalSouls);
     }
 
     private void OnPurchase(int _purchasePrice, string _ID)

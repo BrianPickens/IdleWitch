@@ -393,7 +393,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6846733833782007713}
         m_TargetAssemblyTypeName: PurchaseButton, Assembly-CSharp
-        m_MethodName: OnPurchasePressed
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -416,7 +416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myItemType: 0
-  purchasePrice: 0
   myButton: {fileID: 6846733833782007718}
   displayText: {fileID: 6846733832729565522}
   requirementText: {fileID: 335785228744146561}

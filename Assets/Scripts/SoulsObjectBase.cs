@@ -21,10 +21,8 @@ public class SoulsObjectBase : MonoBehaviour
         {
             BuildAttraction();
         }
-        else if (!isBuilt)
-        {
-            
-        }
+
+
     }
 
     public virtual void BuildAttraction()

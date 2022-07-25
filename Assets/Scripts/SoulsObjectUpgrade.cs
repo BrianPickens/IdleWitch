@@ -12,6 +12,17 @@ public class SoulsObjectUpgrade : SoulsObjectBase
     [SerializeField] private SoulsObjectAttraction myBaseAttraction;
     [SerializeField] private int upgradeLevel;
 
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        if (isBuilt)
+        {
+            myBaseAttraction.ShowUpgradeLevel(upgradeLevel);
+        }
+    }
+
     public float GetSoulCapacityIncrease()
     {
         return soulCapacityIncrease;

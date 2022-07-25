@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8152432445404826587, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: m_Name
-      value: McDonalds(Attraction)
+      value: WacDonalds(Attraction)
       objectReference: {fileID: 0}
     - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: myItemType

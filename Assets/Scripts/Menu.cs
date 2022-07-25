@@ -13,11 +13,11 @@ public class Menu : MonoBehaviour
 
     [SerializeField] private List<PurchaseButton> purchaseButtons = new List<PurchaseButton>();
 
-    public void InitializeMenu(Action<int, string> _purchaseCallback)
+    public void InitializeMenu(Action<int, string> _purchaseCallback, PurchaseConfirmation _purchaseConfirmationMenu)
     {
         for (int i = 0; i < purchaseButtons.Count; i++)
         {
-            purchaseButtons[i].Initialize(_purchaseCallback);
+            purchaseButtons[i].Initialize(_purchaseCallback, _purchaseConfirmationMenu);
         }
     }
 

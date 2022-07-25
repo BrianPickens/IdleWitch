@@ -24,6 +24,22 @@ public class Menus : MonoBehaviour
 
     public Action OnMenuClosed;
 
+    [SerializeField] private PurchaseConfirmation purchaseMenu;
+
+    public void InitializeMenus(Action<int, string> _purchaseCallback)
+    {
+        constructionMenu.InitializeMenu(_purchaseCallback, purchaseMenu);
+        detectionMenu.InitializeMenu(_purchaseCallback, purchaseMenu);
+        offersMenu.InitializeMenu(_purchaseCallback, purchaseMenu);
+    }
+
+    public void UpdateButtons(int _totalSouls)
+    {
+        constructionMenu.UpdateButtons(_totalSouls);
+        detectionMenu.UpdateButtons(_totalSouls);
+        offersMenu.UpdateButtons(_totalSouls);
+    }
+
     private void Update()
     {
         UpdateButtonInteractivity();

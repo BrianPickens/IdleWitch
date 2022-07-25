@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PurchaseItemType { CandyBasket1, CandyBasket2, CandySign, BigCauldron, CandifyHouse1, CandifyHouse2, HouseExpansion1,
     HouseExpansion2, BallPit, Drones, Pony, Arcade, TRex, Pool, NeonSign, RockConcert, RollerCoaster,
-    WitchBroom, McDonalds, CandySmells, DuckFeet, FreePuppies, Balloons, BaseCauldron, BaseHouse }
+    WitchBroom, McDonalds, CandySmells, DuckFeet, FreePuppies, Balloons, BaseCauldron, BaseHouse, HouseExpansion3 }
 
 public class ConstantStrings : MonoBehaviour
 {
@@ -56,6 +56,7 @@ public class ConstantStrings : MonoBehaviour
     private string balloonsID = "balloons";
     private string baseCauldronID = "baseCauldron";
     private string baseHouseID = "baseHouse";
+    private string houseExpansion3ID = "houseExpansion3";
 
     [SerializeField] private string candyBasket1Name = "candyBasket1";
     [SerializeField] private string candyBasket2Name = "candyBasket2";
@@ -63,6 +64,8 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private string bigCauldronName = "bigCauldron";
     [SerializeField] private string candifyHouse1Name = "candifyHouse1";
     [SerializeField] private string candifyHouse2Name = "candifyHouse2";
+    [SerializeField] private string houseExpansion1Name = "houseExpansion1";
+    [SerializeField] private string houseExpansion2Name = "houseExpansion2";
     [SerializeField] private string ballPitName = "ballPit";
     [SerializeField] private string dronesName = "drones";
     [SerializeField] private string ponyName = "pony";
@@ -80,6 +83,7 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private string balloonsName = "balloons";
     [SerializeField] private string baseCauldronName = "baseCauldron";
     [SerializeField] private string baseHouseName = "baseHouse";
+    [SerializeField] private string houseExpansion3Name = "houseExpansion3";
 
     [SerializeField] private int candyBasket1Price = 20;
     [SerializeField] private int candyBasket2Price = 20;
@@ -87,6 +91,8 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private int bigCauldronPrice = 20;
     [SerializeField] private int candifyHouse1Price = 20;
     [SerializeField] private int candifyHouse2Price = 20;
+    [SerializeField] private int houseExpansion1Price = 20;
+    [SerializeField] private int houseExpansion2Price = 20;
     [SerializeField] private int ballPitPrice = 20;
     [SerializeField] private int dronesPrice = 20;
     [SerializeField] private int ponyPrice = 20;
@@ -104,6 +110,34 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private int balloonsPrice = 20;
     [SerializeField] private int baseCauldronPrice = 20;
     [SerializeField] private int baseHousePrice = 20;
+    [SerializeField] private int houseExpansion3Price = 20;
+
+    [SerializeField] private string candyBasket1Description = "candyBasket1";
+    [SerializeField] private string candyBasket2Description = "candyBasket2";
+    [SerializeField] private string candySignDescription = "candySign";
+    [SerializeField] private string bigCauldronDescription = "bigCauldron";
+    [SerializeField] private string candifyHouse1Description = "candifyHouse1";
+    [SerializeField] private string candifyHouse2Description = "candifyHouse2";
+    [SerializeField] private string houseExpansion1Description = "houseExpansion1";
+    [SerializeField] private string houseExpansion2Description = "houseExpansion2";
+    [SerializeField] private string ballPitDescription = "ballPit";
+    [SerializeField] private string dronesDescription = "drones";
+    [SerializeField] private string ponyDescription = "pony";
+    [SerializeField] private string arcadeDescription = "arcade";
+    [SerializeField] private string tRexDescription = "tRex";
+    [SerializeField] private string poolDescription = "pool";
+    [SerializeField] private string neonSignDescription = "neonSign";
+    [SerializeField] private string rockConcertDescription = "rockConcert";
+    [SerializeField] private string rollerCoasterDescription = "rollerCoaster";
+    [SerializeField] private string witchBroomDescription = "witchBroom";
+    [SerializeField] private string mcDonaldsDescription = "mcDonalds";
+    [SerializeField] private string candySmellsDescription = "candySmells";
+    [SerializeField] private string duckFeetDescription = "duckFeet";
+    [SerializeField] private string freePuppiesDescription = "freePuppies";
+    [SerializeField] private string balloonsDescription = "balloons";
+    [SerializeField] private string baseCauldronDescription = "baseCauldron";
+    [SerializeField] private string baseHouseDescription = "baseHouse";
+    [SerializeField] private string houseExpansion3Description = "houseExpansion3";
 
     public string GetDisplayName(PurchaseItemType _type)
     {
@@ -133,6 +167,14 @@ public class ConstantStrings : MonoBehaviour
 
             case PurchaseItemType.CandifyHouse2:
                 displayNameString = candifyHouse2Name;
+                break;
+
+            case PurchaseItemType.HouseExpansion1:
+                displayNameString = houseExpansion1Name;
+                break;
+
+            case PurchaseItemType.HouseExpansion2:
+                displayNameString = houseExpansion2Name;
                 break;
 
             case PurchaseItemType.BallPit:
@@ -203,6 +245,10 @@ public class ConstantStrings : MonoBehaviour
                 displayNameString = baseHouseName;
                 break;
 
+            case PurchaseItemType.HouseExpansion3:
+                displayNameString = houseExpansion3Name;
+                break;
+
             default:
                 displayNameString = "";
                 break;
@@ -239,6 +285,14 @@ public class ConstantStrings : MonoBehaviour
 
             case PurchaseItemType.CandifyHouse2:
                 itemID = candifyHouse2ID;
+                break;
+
+            case PurchaseItemType.HouseExpansion1:
+                itemID = houseExpansion1ID;
+                break;
+
+            case PurchaseItemType.HouseExpansion2:
+                itemID = houseExpansion2ID;
                 break;
 
             case PurchaseItemType.BallPit:
@@ -309,6 +363,10 @@ public class ConstantStrings : MonoBehaviour
                 itemID = baseHouseID;
                 break;
 
+            case PurchaseItemType.HouseExpansion3:
+                itemID = houseExpansion3ID;
+                break;
+
             default:
                 itemID = "";
                 break;
@@ -345,6 +403,14 @@ public class ConstantStrings : MonoBehaviour
 
             case PurchaseItemType.CandifyHouse2:
                 itemPrice = candifyHouse2Price;
+                break;
+
+            case PurchaseItemType.HouseExpansion1:
+                itemPrice = houseExpansion1Price;
+                break;
+
+            case PurchaseItemType.HouseExpansion2:
+                itemPrice = houseExpansion2Price;
                 break;
 
             case PurchaseItemType.BallPit:
@@ -415,11 +481,133 @@ public class ConstantStrings : MonoBehaviour
                 itemPrice = baseHousePrice;
                 break;
 
+            case PurchaseItemType.HouseExpansion3:
+                itemPrice = houseExpansion3Price;
+                break;
+
             default:
                 itemPrice = 0;
                 break;
         }
 
         return itemPrice;
+    }
+
+    public string GetDisplayDescription(PurchaseItemType _type)
+    {
+        string displayDescription = "";
+
+        switch (_type)
+        {
+            case PurchaseItemType.CandyBasket1:
+                displayDescription = candyBasket1Description;
+                break;
+
+            case PurchaseItemType.CandyBasket2:
+                displayDescription = candyBasket2Description;
+                break;
+
+            case PurchaseItemType.CandySign:
+                displayDescription = candySignDescription;
+                break;
+
+            case PurchaseItemType.BigCauldron:
+                displayDescription = bigCauldronDescription;
+                break;
+
+            case PurchaseItemType.CandifyHouse1:
+                displayDescription = candifyHouse1Description;
+                break;
+
+            case PurchaseItemType.CandifyHouse2:
+                displayDescription = candifyHouse2Description;
+                break;
+
+            case PurchaseItemType.HouseExpansion1:
+                displayDescription = houseExpansion1Description;
+                break;
+
+            case PurchaseItemType.HouseExpansion2:
+                displayDescription = houseExpansion2Description;
+                break;
+
+            case PurchaseItemType.BallPit:
+                displayDescription = ballPitDescription;
+                break;
+
+            case PurchaseItemType.Drones:
+                displayDescription = dronesDescription;
+                break;
+
+            case PurchaseItemType.Pony:
+                displayDescription = ponyDescription;
+                break;
+
+            case PurchaseItemType.Arcade:
+                displayDescription = arcadeDescription;
+                break;
+
+            case PurchaseItemType.TRex:
+                displayDescription = tRexDescription;
+                break;
+
+            case PurchaseItemType.Pool:
+                displayDescription = poolDescription;
+                break;
+
+            case PurchaseItemType.NeonSign:
+                displayDescription = neonSignDescription;
+                break;
+
+            case PurchaseItemType.RockConcert:
+                displayDescription = rockConcertDescription;
+                break;
+
+            case PurchaseItemType.RollerCoaster:
+                displayDescription = rollerCoasterDescription;
+                break;
+
+            case PurchaseItemType.WitchBroom:
+                displayDescription = witchBroomDescription;
+                break;
+
+            case PurchaseItemType.McDonalds:
+                displayDescription = mcDonaldsDescription;
+                break;
+
+            case PurchaseItemType.CandySmells:
+                displayDescription = candySmellsDescription;
+                break;
+
+            case PurchaseItemType.DuckFeet:
+                displayDescription = duckFeetDescription;
+                break;
+
+            case PurchaseItemType.FreePuppies:
+                displayDescription = freePuppiesDescription;
+                break;
+
+            case PurchaseItemType.Balloons:
+                displayDescription = balloonsDescription;
+                break;
+
+            case PurchaseItemType.BaseCauldron:
+                displayDescription = baseCauldronDescription;
+                break;
+
+            case PurchaseItemType.BaseHouse:
+                displayDescription = baseHouseDescription;
+                break;
+
+            case PurchaseItemType.HouseExpansion3:
+                displayDescription = houseExpansion3Description;
+                break;
+
+            default:
+                displayDescription = "";
+                break;
+        }
+
+        return displayDescription;
     }
 }

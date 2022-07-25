@@ -12,7 +12,9 @@ public class PurchaseButton : MonoBehaviour
 
     [SerializeField] private PurchaseItemType myItemType;
 
-    [SerializeField] private int purchasePrice;
+    private PurchaseConfirmation purchaseConfirmationMenu;
+
+    private int purchasePrice;
 
     [SerializeField] private Button myButton;
 
@@ -23,8 +25,13 @@ public class PurchaseButton : MonoBehaviour
 
     public Action<int, string> OnPurchaseMade;
 
-    public void Initialize(Action<int, string> _purchaseCallback)
+    public void Initialize(Action<int, string> _purchaseCallback, PurchaseConfirmation _purchaseConfirmationMenu)
     {
+
+        purchaseConfirmationMenu = _purchaseConfirmationMenu;
+
+        purchasePrice = ConstantStrings.Instance.GetItemPrice(myItemType);
+
         OnPurchaseMade = _purchaseCallback;
 
         isBuilt = PlayerPrefsSavingLoading.Instance.LoadBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.built);
@@ -78,6 +85,11 @@ public class PurchaseButton : MonoBehaviour
             displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
             requirementText.text = purchasePrice.ToString();
         }
+    }
+
+    public void OnClick()
+    {
+        purchaseConfirmationMenu.DisplayPurchase(myItemType, OnPurchasePressed);
     }
 
     public void OnPurchasePressed()
