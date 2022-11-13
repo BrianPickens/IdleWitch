@@ -253,6 +253,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af49a703f46a8c499f96ef463d1f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &444523218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 444523219}
+  m_Layer: 0
+  m_Name: SoulsTarget(Temp)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &444523219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444523218}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.31, y: -3.24, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &518842650
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +936,8 @@ MonoBehaviour:
   - {fileID: 2009243775}
   - {fileID: 668377246}
   allMenus: {fileID: 1633556944}
+  soulsCreator: {fileID: 1976824229}
+  soulsTarget: {fileID: 444523219}
 --- !u!114 &1390466013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5336421242787369057, guid: 708dc50deae7014499d02353f56868cf, type: 3}
@@ -1021,7 +1053,7 @@ RectTransform:
   m_Children:
   - {fileID: 1332678595}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1218,6 +1250,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00668ef7ea7cacf4ea7f1129f3e29974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1976824229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6257860486720801552, guid: 708dc50deae7014499d02353f56868cf, type: 3}
+  m_PrefabInstance: {fileID: 1976824225}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c85cb9ffb7621e429d96b325745f87d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2009243775 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1625833969950366795, guid: 708dc50deae7014499d02353f56868cf, type: 3}
@@ -1323,7 +1366,7 @@ RectTransform:
   m_Children:
   - {fileID: 659154655}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

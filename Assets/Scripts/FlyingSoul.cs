@@ -5,9 +5,9 @@ using UnityEngine;
 public class FlyingSoul : MonoBehaviour
 {
     [SerializeField] private Transform myTransform;
-    [SerializeField] private Vector2 startPosition;
-    [SerializeField] private Vector2 midPoint;
-    [SerializeField] private Vector2 endPosition;
+    private Vector2 startPosition;
+    private Vector2 midPoint;
+    private Vector2 endPosition;
 
     [SerializeField] private float moveTime;
 
@@ -18,6 +18,7 @@ public class FlyingSoul : MonoBehaviour
         startPosition = _startPos;
         midPoint = _midPoint;
         endPosition = _endPos;
+        gameObject.SetActive(true);
     }
 
     private void Update()

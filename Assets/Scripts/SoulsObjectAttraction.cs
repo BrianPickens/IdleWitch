@@ -21,7 +21,7 @@ public class SoulsObjectAttraction : SoulsObjectBase
 
     private DateTime lastCollection;
 
-    public Action<int> OnCollectSouls;
+    public Action<int, Vector2> OnCollectSouls;
 
     [SerializeField] private List<SoulsObjectUpgrade> myUpgrades = new List<SoulsObjectUpgrade>();
 
@@ -125,7 +125,7 @@ public class SoulsObjectAttraction : SoulsObjectBase
     {
         if (Mathf.FloorToInt(currentGatheredSouls) > 0)
         {
-            OnCollectSouls?.Invoke(Mathf.FloorToInt(currentGatheredSouls));
+            OnCollectSouls?.Invoke(Mathf.FloorToInt(currentGatheredSouls), transform.position);
             currentGatheredSouls = 0f;
             lastCollection = DateTime.Now;
             PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());

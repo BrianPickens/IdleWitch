@@ -14,6 +14,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Menus allMenus;
 
+    [SerializeField] private SoulsCreator soulsCreator;
+    [SerializeField] private Transform soulsTarget;
+
 
     private void Start()
     {
@@ -63,9 +66,10 @@ public class GameController : MonoBehaviour
         totalSouls = PlayerPrefsSavingLoading.Instance.LoadInt(ConstantStrings.totalSouls);
     }
 
-    private void CollectGatheredSouls(int _numSouls)
+    private void CollectGatheredSouls(int _numSouls, Vector2 _gatherPoint)
     {
         totalSouls += _numSouls;
+        soulsCreator.CreateSouls(_gatherPoint, soulsTarget.position, _numSouls);
         PlayerPrefsSavingLoading.Instance.SaveInt(ConstantStrings.totalSouls, totalSouls);
     }
 
