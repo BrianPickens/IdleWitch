@@ -78,6 +78,7 @@ public class GameController : MonoBehaviour
     private void OnPurchase(int _purchasePrice, string _ID)
     {
         totalSouls -= _purchasePrice;
+        PlayerPrefsSavingLoading.Instance.SaveInt(ConstantStrings.totalSouls, totalSouls);
         for (int i = 0; i < allAttractions.Count; i++)
         {
             if (allAttractions[i].GetID() == _ID)
