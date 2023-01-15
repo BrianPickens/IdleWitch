@@ -13,9 +13,9 @@ public class SoulsObjectUpgrade : SoulsObjectBase
     [SerializeField] private int upgradeLevel;
 
 
-    public override void Initialize()
+    public override void InitializeBuiltAttraction()
     {
-        base.Initialize();
+        base.InitializeBuiltAttraction();
 
         if (isBuilt)
         {
@@ -38,9 +38,9 @@ public class SoulsObjectUpgrade : SoulsObjectBase
         return soulGatherAmountIncrease;
     }
 
-    public override void BuildAttraction()
+    public override void BuildAttraction(bool _rebuild)
     {
-        base.BuildAttraction();
+        base.BuildAttraction(_rebuild);
         myBaseAttraction.ShowUpgradeLevel(upgradeLevel);
     }
 }

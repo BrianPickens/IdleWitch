@@ -17,6 +17,8 @@ public class SoulsObjectAttraction : SoulsObjectBase
 
     [SerializeField] private TextMeshProUGUI soulsDisplay;
 
+    private int currentUpgradeLevel;
+
     private float currentGatheredSouls;
 
     private DateTime lastCollection;
@@ -28,6 +30,10 @@ public class SoulsObjectAttraction : SoulsObjectBase
     [SerializeField] private GameObject displayHolder;
 
     [SerializeField] private List<GameObject> upgradeLevelDisplays = new List<GameObject>();
+
+    [SerializeField] private List<GameObject> fireDisplays = new List<GameObject>();
+
+    [SerializeField] private GameObject destroyedDisplay;
 
     [SerializeField] private GameObject treesToClear;
 
@@ -41,9 +47,9 @@ public class SoulsObjectAttraction : SoulsObjectBase
         UpdateUI();
     }
 
-    public override void Initialize()
+    public override void InitializeBuiltAttraction()
     {
-        base.Initialize();
+        base.InitializeBuiltAttraction();
 
         if (PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime) != string.Empty)
         {
@@ -57,36 +63,60 @@ public class SoulsObjectAttraction : SoulsObjectBase
 
         }
 
-        if (!isBuilt)
+        
+        if (!isBuilt)//if we aren't already built, show the trees and make sure its all turned off
         {
-            treesToClear.SetActive(true);
+            SetTreesActive(true);
             soulsDisplayHolder.SetActive(false);
             displayHolder.SetActive(false);
         }
         else
         {
-            ClearTrees();
-            soulsDisplayHolder.SetActive(true);
-            displayHolder.SetActive(true);
+            BuildAttractionFromLoading();
         }
 
     }
 
-    public override void BuildAttraction()
+    public void BuildAttractionFromLoading()
     {
-        base.BuildAttraction();
-        ClearTrees();
+        SetTreesActive(false);
+        soulsDisplayHolder.SetActive(true);
+        displayHolder.SetActive(true);
+        ShowUpgradeLevel(0);
+        destroyedDisplay.SetActive(false);
+    }
+
+    public override void BuildAttraction(bool _rebuild)
+    {
+        base.BuildAttraction(_rebuild);
+        SetTreesActive(false);
         soulsDisplayHolder.SetActive(true);
         displayHolder.SetActive(true);
         ShowUpgradeLevel(0);
         lastCollection = DateTime.Now;
         PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
-
     }
 
-    private void ClearTrees()
+    public override void SetAttractionOnFire()
     {
-        treesToClear.SetActive(false);
+        base.SetAttractionOnFire();
+        fireDisplays[currentUpgradeLevel].SetActive(true);
+    }
+
+    public override void DestroyAttraction()
+    {
+        base.DestroyAttraction();
+        fireDisplays[currentUpgradeLevel].SetActive(false);
+        upgradeLevelDisplays[currentUpgradeLevel].SetActive(false);
+        destroyedDisplay.SetActive(true);
+    }
+
+    private void SetTreesActive(bool _active)
+    {
+        if (treesToClear != null)
+        {
+            treesToClear.SetActive(_active);
+        }
     }
 
     private void UpdateSoulsGathered()
@@ -121,9 +151,18 @@ public class SoulsObjectAttraction : SoulsObjectBase
         soulsDisplay.text = Mathf.FloorToInt(currentGatheredSouls).ToString() + "/" + (soulCapacity+GetCapacityUpgradeAmount()).ToString();
     }
 
+    //called from tapping a button in editor
     public void OnCollectButtonPressed()
     {
-        if (Mathf.FloorToInt(currentGatheredSouls) > 0)
+        if (onFire)
+        {
+            DestroyAttraction();
+        }
+        else if (isDestroyed)
+        {
+            //add UI for rebuild
+        }
+        else if (Mathf.FloorToInt(currentGatheredSouls) > 0)
         {
             OnCollectSouls?.Invoke(Mathf.FloorToInt(currentGatheredSouls), transform.position);
             currentGatheredSouls = 0f;
@@ -178,12 +217,19 @@ public class SoulsObjectAttraction : SoulsObjectBase
 
     public void ShowUpgradeLevel(int _upgradeLevel)
     {
+        if (_upgradeLevel < currentUpgradeLevel)
+        {
+            return; //this lets us not have to worrry about load order when showing the attractions because the hightest upgrade will be shown.
+        }
+
         for (int i = 0; i < upgradeLevelDisplays.Count; i++)
         {
             upgradeLevelDisplays[i].SetActive(false);
         }
 
         upgradeLevelDisplays[_upgradeLevel].SetActive(true);
+
+        currentUpgradeLevel = _upgradeLevel;
 
     }
 

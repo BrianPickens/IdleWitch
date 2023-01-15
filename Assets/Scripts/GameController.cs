@@ -35,7 +35,17 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < allAttractions.Count; i++)
         {
-            allAttractions[i].Initialize();
+            allAttractions[i].InitializeBuiltAttraction();
+        }
+
+        for (int i = 0; i < allAttractions.Count; i++)
+        {
+            allAttractions[i].InitializeOnFireAttraction();
+        }
+
+        for (int i = 0; i < allAttractions.Count; i++)
+        {
+            allAttractions[i].InitializeDestroyedAttraction();
         }
     }
 
@@ -59,6 +69,10 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         UpdateUI();
+
+        //test
+
+        //end test
     }
 
     private void LoadData()
@@ -87,7 +101,7 @@ public class GameController : MonoBehaviour
         {
             if (allAttractions[i].GetID() == _ID)
             {
-                allAttractions[i].BuildAttraction();
+                allAttractions[i].BuildAttraction(false);
                 break;
             }
         }
