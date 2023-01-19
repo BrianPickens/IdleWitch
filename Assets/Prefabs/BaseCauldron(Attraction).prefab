@@ -167,7 +167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7748480019346300975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5099,6 +5099,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 6210055994379960298, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 947e781e843e64dfa8d991e10319aa36, type: 3}
     - target: {fileID: 6880545521519673131, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5204,9 +5208,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: fireDisplays.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: myUpgrades.Array.data[0]
       value: 
       objectReference: {fileID: 7185224242215411546}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: fireDisplays.Array.data[0]
+      value: 
+      objectReference: {fileID: 4978679128744574683}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: fireDisplays.Array.data[1]
+      value: 
+      objectReference: {fileID: 4978679128744574683}
     - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: upgradeLevelDisplays.Array.size
       value: 2

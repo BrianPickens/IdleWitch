@@ -17,6 +17,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private SoulsCreator soulsCreator;
     [SerializeField] private Transform soulsTarget;
 
+    //test
+    private float currentFireTimer;
+    //end test
+
 
     private void Start()
     {
@@ -71,7 +75,26 @@ public class GameController : MonoBehaviour
         UpdateUI();
 
         //test
+        currentFireTimer -= Time.deltaTime;
+        if (currentFireTimer <= 0f)
+        {
+            currentFireTimer = 5f;
+            List<SoulsObjectBase> fireTargets = new List<SoulsObjectBase>();
+            for (int i = 0; i < allAttractions.Count; i++)
+            {
+                if (allAttractions[i].IsBuilt() && !allAttractions[i].IsOnFire() && !allAttractions[i].IsDestroyed())
+                {
+                    Debug.LogError("ADDED: " + allAttractions[i].GetID());
+                    fireTargets.Add(allAttractions[i]);
+                }
+            }
 
+            if (fireTargets.Count > 0)
+            {
+                int index = UnityEngine.Random.Range(0, fireTargets.Count);
+                fireTargets[index].SetAttractionOnFire();
+            }
+        }
         //end test
     }
 

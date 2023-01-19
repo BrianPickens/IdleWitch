@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6326923196727461645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4824,6 +4824,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 6210055994379960298, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dd237cd48403241ad8023d7c44550129, type: 3}
     - target: {fileID: 6880545521519673131, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4920,6 +4924,14 @@ PrefabInstance:
       propertyPath: myItemType
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: fireDisplays.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: fireDisplays.Array.data[0]
+      value: 
+      objectReference: {fileID: 5938576675482309176}
     - target: {fileID: 8622736421590514363, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1024

@@ -43,7 +43,6 @@ public class SoulsObjectBase : MonoBehaviour
         }
     }
 
-
     public virtual void BuildAttraction(bool _rebuild)
     {
         Debug.LogError(ConstantStrings.Instance.GetDisplayName(myItemType) + "Built");
@@ -60,7 +59,7 @@ public class SoulsObjectBase : MonoBehaviour
 
     public virtual void SetAttractionOnFire()
     {
-        Debug.LogError(ConstantStrings.Instance.GetDisplayName(myItemType) + "on Fire");
+        Debug.LogError(ConstantStrings.Instance.GetDisplayName(myItemType) + " on Fire");
 
         onFire = true;
 
@@ -84,5 +83,15 @@ public class SoulsObjectBase : MonoBehaviour
     public bool IsBuilt()
     {
         return isBuilt;
+    }
+
+    public bool IsOnFire()
+    {
+        return onFire;
+    }
+
+    public bool IsDestroyed()
+    {
+        return isDestroyed;
     }
 }

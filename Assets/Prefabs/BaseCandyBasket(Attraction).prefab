@@ -167,7 +167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8177062305124861644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5390,6 +5390,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6210055994379960298, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e01fb494817d54201bca154ec1c39d9f, type: 3}
     - target: {fileID: 6880545521519673131, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5491,6 +5495,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: fireDisplays.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: myUpgrades.Array.data[0]
       value: 
       objectReference: {fileID: 4222036167493348615}
@@ -5498,6 +5506,18 @@ PrefabInstance:
       propertyPath: myUpgrades.Array.data[1]
       value: 
       objectReference: {fileID: 3105790772534626230}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: fireDisplays.Array.data[0]
+      value: 
+      objectReference: {fileID: 5220482725720539460}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: fireDisplays.Array.data[1]
+      value: 
+      objectReference: {fileID: 5220482725720539460}
+    - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
+      propertyPath: fireDisplays.Array.data[2]
+      value: 
+      objectReference: {fileID: 5220482725720539460}
     - target: {fileID: 8385771764775494270, guid: ba99b826086e0b749939d01a906f3289, type: 3}
       propertyPath: upgradeLevelDisplays.Array.size
       value: 3

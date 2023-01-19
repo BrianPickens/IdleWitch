@@ -14,6 +14,7 @@ public class SoulsObjectAttraction : SoulsObjectBase
     [SerializeField] private float soulGatherAmount;
 
     [SerializeField] private GameObject soulsDisplayHolder;
+    [SerializeField] private GameObject rebuildButtonHolder;
 
     [SerializeField] private TextMeshProUGUI soulsDisplay;
 
@@ -89,12 +90,23 @@ public class SoulsObjectAttraction : SoulsObjectBase
     public override void BuildAttraction(bool _rebuild)
     {
         base.BuildAttraction(_rebuild);
+
         SetTreesActive(false);
         soulsDisplayHolder.SetActive(true);
-        displayHolder.SetActive(true);
-        ShowUpgradeLevel(0);
         lastCollection = DateTime.Now;
         PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
+
+        if (_rebuild)
+        {
+            rebuildButtonHolder.SetActive(false);
+            ShowUpgradeLevel(currentUpgradeLevel);
+        }
+        else
+        {
+            displayHolder.SetActive(true);
+            ShowUpgradeLevel(0);
+        }
+
     }
 
     public override void SetAttractionOnFire()
@@ -109,6 +121,8 @@ public class SoulsObjectAttraction : SoulsObjectBase
         fireDisplays[currentUpgradeLevel].SetActive(false);
         upgradeLevelDisplays[currentUpgradeLevel].SetActive(false);
         destroyedDisplay.SetActive(true);
+        rebuildButtonHolder.SetActive(true);
+        soulsDisplayHolder.SetActive(false);
     }
 
     private void SetTreesActive(bool _active)
@@ -158,11 +172,7 @@ public class SoulsObjectAttraction : SoulsObjectBase
         {
             DestroyAttraction();
         }
-        else if (isDestroyed)
-        {
-            //add UI for rebuild
-        }
-        else if (Mathf.FloorToInt(currentGatheredSouls) > 0)
+        else if (!isDestroyed && Mathf.FloorToInt(currentGatheredSouls) > 0)
         {
             OnCollectSouls?.Invoke(Mathf.FloorToInt(currentGatheredSouls), transform.position);
             currentGatheredSouls = 0f;
@@ -174,6 +184,11 @@ public class SoulsObjectAttraction : SoulsObjectBase
             //nothign to gather
         }
 
+    }
+
+    public void OnRebuildClicked()
+    {
+        BuildAttraction(true);
     }
 
     private float GetCapacityUpgradeAmount()
