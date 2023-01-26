@@ -100,6 +100,8 @@ public class SoulsObjectAttraction : SoulsObjectBase
         {
             rebuildButtonHolder.SetActive(false);
             ShowUpgradeLevel(currentUpgradeLevel);
+            isDestroyed = false;
+            PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.destroyed, false);
         }
         else
         {

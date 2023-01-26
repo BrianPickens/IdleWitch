@@ -9,6 +9,8 @@ public class PurchaseButton : MonoBehaviour
 {
 
     private bool isBuilt;
+    private bool isOnFire;
+    private bool isDestroyed;
 
     [SerializeField] private PurchaseItemType myItemType;
 
@@ -49,6 +51,9 @@ public class PurchaseButton : MonoBehaviour
 
     public void UpdateUI(int _currentSouls)
     {
+        isOnFire = PlayerPrefsSavingLoading.Instance.LoadBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.onFire);
+        isDestroyed = PlayerPrefsSavingLoading.Instance.LoadBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.destroyed);
+
         if (isBuilt)
         {
             myButton.interactable = false;
@@ -85,6 +90,20 @@ public class PurchaseButton : MonoBehaviour
             displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
             requirementText.text = purchasePrice.ToString();
         }
+
+        if (!isBuilt && IsPrerequisiteOnFire())
+        {
+            myButton.interactable = false;
+            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+            requirementText.text = "Put Out Fire!";
+        }
+        else if (!isBuilt && IsPrerequisiteDestroyed())
+        {
+            myButton.interactable = false;
+            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+            requirementText.text = "Rebuild First!";
+        }
+    
     }
 
     public void OnClick()
@@ -115,6 +134,34 @@ public class PurchaseButton : MonoBehaviour
         return prerequisitesBuilt;
     }
 
+    private bool IsPrerequisiteOnFire()
+    {
+        bool prerequisiteOnFire = false;
+        for (int i = 0; i < prerequisites.Count; i++)
+        {
+            if (prerequisites[i].IsOnFire())
+            {
+                prerequisiteOnFire = true;
+            }
+        }
+
+        return prerequisiteOnFire;
+    }
+
+    private bool IsPrerequisiteDestroyed()
+    {
+        bool prerequisiteDestroyed = false;
+        for (int i = 0; i < prerequisites.Count; i++)
+        {
+            if (prerequisites[i].IsDestroyed())
+            {
+                prerequisiteDestroyed = true;
+            }
+        }
+
+        return prerequisiteDestroyed;
+    }
+
     private string GetPrerequisiteName()
     {
         string preReqName = "";
@@ -134,6 +181,15 @@ public class PurchaseButton : MonoBehaviour
         return isBuilt;
     }
 
+    public bool IsOnFire()
+    {
+        return isOnFire;
+    }
+
+    public bool IsDestroyed()
+    {
+        return isDestroyed;
+    }
     public string GetDisplayName()
     {
         return ConstantStrings.Instance.GetDisplayName(myItemType);

@@ -47,6 +47,8 @@ public class SoulsObjectBase : MonoBehaviour
     {
         Debug.LogError(ConstantStrings.Instance.GetDisplayName(myItemType) + "Built");
 
+        Debug.LogError("NEED TO CHARGE FOR REBUILDS");
+
         isBuilt = true;
         PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.built, true);
 

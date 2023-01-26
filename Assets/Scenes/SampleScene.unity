@@ -1640,6 +1640,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1489948887552602183, guid: e0d04acf54453604386a7fd4d8295766, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1344246899}
+    - target: {fileID: 1489948887552602183, guid: e0d04acf54453604386a7fd4d8295766, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DebugAddSouls
+      objectReference: {fileID: 0}
     - target: {fileID: 1615715662600766248, guid: e0d04acf54453604386a7fd4d8295766, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

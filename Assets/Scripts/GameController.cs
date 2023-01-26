@@ -136,4 +136,10 @@ public class GameController : MonoBehaviour
     {
         PlayerPrefsSavingLoading.Instance.DeleteAllKeys();
     }
+
+    public void DebugAddSouls()
+    {
+        totalSouls += 50;
+        PlayerPrefsSavingLoading.Instance.SaveInt(ConstantStrings.totalSouls, totalSouls);
+    }
 }
