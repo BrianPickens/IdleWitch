@@ -87,28 +87,30 @@ public class SoulsObjectAttraction : SoulsObjectBase
         destroyedDisplay.SetActive(false);
     }
 
-    public override void BuildAttraction(bool _rebuild)
+    public override void BuildAttraction()
     {
-        base.BuildAttraction(_rebuild);
+        base.BuildAttraction();
 
         SetTreesActive(false);
         soulsDisplayHolder.SetActive(true);
         lastCollection = DateTime.Now;
         PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
+        displayHolder.SetActive(true);
+        ShowUpgradeLevel(0);
+    }
 
-        if (_rebuild)
-        {
-            rebuildButtonHolder.SetActive(false);
-            ShowUpgradeLevel(currentUpgradeLevel);
-            isDestroyed = false;
-            PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.destroyed, false);
-        }
-        else
-        {
-            displayHolder.SetActive(true);
-            ShowUpgradeLevel(0);
-        }
+    public override void RebuildAttraction()
+    {
+        base.RebuildAttraction();
+        SetTreesActive(false);
+        soulsDisplayHolder.SetActive(true);
+        lastCollection = DateTime.Now;
+        PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
 
+        rebuildButtonHolder.SetActive(false);
+        ShowUpgradeLevel(currentUpgradeLevel);
+        isDestroyed = false;
+        PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.destroyed, false);
     }
 
     public override void SetAttractionOnFire()
@@ -190,7 +192,26 @@ public class SoulsObjectAttraction : SoulsObjectBase
 
     public void OnRebuildClicked()
     {
-        BuildAttraction(true);
+        //get upgrade level item type for right price
+        PurchaseItemType highestUpgradeType = myItemType;
+        if (currentUpgradeLevel > 0)
+        {
+            highestUpgradeType = myUpgrades[currentUpgradeLevel - 1].GetItemType();
+        }
+
+        purchaseMenu.DisplayPurchase(highestUpgradeType, RebuildConfirmed);
+    }
+
+    public void RebuildConfirmed()
+    {
+        //get upgrade level item tye fpr right price
+        PurchaseItemType highestUpgradeType = myItemType;
+        if (currentUpgradeLevel > 0)
+        {
+            highestUpgradeType = myUpgrades[currentUpgradeLevel - 1].GetItemType();
+        }
+        //send the myitem type for rebuild becuase we rebuild from base
+        rebuildCallback?.Invoke(ConstantStrings.Instance.GetItemPrice(highestUpgradeType), ConstantStrings.Instance.GetItemID(myItemType));
     }
 
     private float GetCapacityUpgradeAmount()

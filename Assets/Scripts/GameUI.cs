@@ -9,10 +9,16 @@ public class GameUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI totalSoulsDisplay;
 
+    [SerializeField] private PurchaseConfirmation purchaseMenu;
 
     public void UpdateTotalSoulsDisplay(float _numSouls)
     {
         totalSoulsDisplay.text = Mathf.RoundToInt(_numSouls).ToString();
+    }
+
+    public PurchaseConfirmation GetPurchaseMenu()
+    {
+        return purchaseMenu;
     }
 
 }

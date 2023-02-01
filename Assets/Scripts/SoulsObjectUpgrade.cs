@@ -38,9 +38,9 @@ public class SoulsObjectUpgrade : SoulsObjectBase
         return soulGatherAmountIncrease;
     }
 
-    public override void BuildAttraction(bool _rebuild)
+    public override void BuildAttraction()
     {
-        base.BuildAttraction(_rebuild);
+        base.BuildAttraction();
         myBaseAttraction.ShowUpgradeLevel(upgradeLevel);
     }
 }

@@ -15,13 +15,17 @@ public class SoulsObjectBase : MonoBehaviour
 
     [SerializeField] private bool startBuilt;
 
+    protected PurchaseConfirmation purchaseMenu;
+
+    protected Action<int, string> rebuildCallback;
+
     public virtual void InitializeBuiltAttraction()
     {
         isBuilt = PlayerPrefsSavingLoading.Instance.LoadBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.built);
 
         if (!isBuilt && startBuilt)
         {
-            BuildAttraction(false);
+            BuildAttraction();
         }
     }
 
@@ -43,19 +47,21 @@ public class SoulsObjectBase : MonoBehaviour
         }
     }
 
-    public virtual void BuildAttraction(bool _rebuild)
+    public virtual void InitializeRebuild(Action<int, string> _rebuildCallback, PurchaseConfirmation _purchaseMenu)
     {
-        Debug.LogError(ConstantStrings.Instance.GetDisplayName(myItemType) + "Built");
+        rebuildCallback = _rebuildCallback;
+        purchaseMenu = _purchaseMenu;
+    }
 
-        Debug.LogError("NEED TO CHARGE FOR REBUILDS");
-
+    public virtual void BuildAttraction()
+    {
         isBuilt = true;
         PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.built, true);
+    }
 
-        if (_rebuild)
-        {
-            PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.destroyed, false);
-        }
+    public virtual void RebuildAttraction()
+    {
+        PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.destroyed, false);
 
     }
 
@@ -95,5 +101,10 @@ public class SoulsObjectBase : MonoBehaviour
     public bool IsDestroyed()
     {
         return isDestroyed;
+    }
+
+    public PurchaseItemType GetItemType()
+    {
+        return myItemType;
     }
 }

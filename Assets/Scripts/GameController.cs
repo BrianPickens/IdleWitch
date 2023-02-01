@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     private int totalSouls;
 
     [SerializeField] private List<SoulsObjectBase> allAttractions = new List<SoulsObjectBase>();
+    [SerializeField] private List<SoulsObjectBase> baseAttractions = new List<SoulsObjectBase>();
 
     [SerializeField] private Menus allMenus;
 
@@ -51,6 +52,11 @@ public class GameController : MonoBehaviour
         {
             allAttractions[i].InitializeDestroyedAttraction();
         }
+
+        for (int i = 0; i < allAttractions.Count; i++)
+        {
+            allAttractions[i].InitializeRebuild(OnRebuild, gameUI.GetPurchaseMenu());
+        }
     }
 
     private void InitializeActions()
@@ -67,7 +73,7 @@ public class GameController : MonoBehaviour
 
     private void InitializeMenus()
     {
-        allMenus.InitializeMenus(OnPurchase);
+        allMenus.InitializeMenus(OnPurchase, gameUI.GetPurchaseMenu());
     }
 
     private void Update()
@@ -80,12 +86,12 @@ public class GameController : MonoBehaviour
         {
             currentFireTimer = 5f;
             List<SoulsObjectBase> fireTargets = new List<SoulsObjectBase>();
-            for (int i = 0; i < allAttractions.Count; i++)
+            for (int i = 0; i < baseAttractions.Count; i++)
             {
-                if (allAttractions[i].IsBuilt() && !allAttractions[i].IsOnFire() && !allAttractions[i].IsDestroyed())
+                if (baseAttractions[i].IsBuilt() && !baseAttractions[i].IsOnFire() && !baseAttractions[i].IsDestroyed())
                 {
-                    Debug.LogError("ADDED: " + allAttractions[i].GetID());
-                    fireTargets.Add(allAttractions[i]);
+                    Debug.LogError("ADDED: " + baseAttractions[i].GetID());
+                    fireTargets.Add(baseAttractions[i]);
                 }
             }
 
@@ -124,7 +130,21 @@ public class GameController : MonoBehaviour
         {
             if (allAttractions[i].GetID() == _ID)
             {
-                allAttractions[i].BuildAttraction(false);
+                allAttractions[i].BuildAttraction();
+                break;
+            }
+        }
+    }
+
+    private void OnRebuild(int _purchasePrice, string _ID)
+    {
+        totalSouls -= _purchasePrice;
+        PlayerPrefsSavingLoading.Instance.SaveInt(ConstantStrings.totalSouls, totalSouls);
+        for (int i = 0; i < allAttractions.Count; i++)
+        {
+            if (allAttractions[i].GetID() == _ID)
+            {
+                allAttractions[i].RebuildAttraction();
                 break;
             }
         }
