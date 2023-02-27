@@ -117,6 +117,7 @@ public class SoulsObjectAttraction : SoulsObjectBase
     {
         base.SetAttractionOnFire();
         fireDisplays[currentUpgradeLevel].SetActive(true);
+        soulsDisplayHolder.SetActive(false);
     }
 
     public override void DestroyAttraction()
@@ -199,7 +200,7 @@ public class SoulsObjectAttraction : SoulsObjectBase
             highestUpgradeType = myUpgrades[currentUpgradeLevel - 1].GetItemType();
         }
 
-        purchaseMenu.DisplayPurchase(highestUpgradeType, RebuildConfirmed);
+        purchaseMenu.DisplayPurchaseWithSoulsCheck(highestUpgradeType, RebuildConfirmed);
     }
 
     public void RebuildConfirmed()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FlyingSoul : MonoBehaviour
 {
@@ -13,8 +14,11 @@ public class FlyingSoul : MonoBehaviour
 
     private float t;
 
-    public void InitializeSoul(Vector2 _startPos, Vector2 _midPoint, Vector2 _endPos)
+    private Action SoulReachedDestination;
+
+    public void InitializeSoul(Vector2 _startPos, Vector2 _midPoint, Vector2 _endPos, Action _callback)
     {
+        SoulReachedDestination = _callback;
         startPosition = _startPos;
         midPoint = _midPoint;
         endPosition = _endPos;
@@ -33,6 +37,7 @@ public class FlyingSoul : MonoBehaviour
         }
         else
         {
+            SoulReachedDestination?.Invoke();
             Destroy(this.gameObject);
         }
     }

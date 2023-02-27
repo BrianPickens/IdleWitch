@@ -111,8 +111,14 @@ public class GameController : MonoBehaviour
 
     private void CollectGatheredSouls(int _numSouls, Vector2 _gatherPoint)
     {
-        totalSouls += _numSouls;
-        soulsCreator.CreateSouls(_gatherPoint, soulsTarget.position, _numSouls);
+        //totalSouls += _numSouls;
+        soulsCreator.CreateSouls(_gatherPoint, soulsTarget.position, _numSouls, AddSoul);
+        //PlayerPrefsSavingLoading.Instance.SaveInt(ConstantStrings.totalSouls, totalSouls);
+    }
+
+    private void AddSoul()
+    {
+        totalSouls++;
         PlayerPrefsSavingLoading.Instance.SaveInt(ConstantStrings.totalSouls, totalSouls);
     }
 

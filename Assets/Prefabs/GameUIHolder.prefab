@@ -1314,7 +1314,6 @@ MonoBehaviour:
   constructionButton: {fileID: 447508392932015491}
   detectionButton: {fileID: 447508393219131184}
   offersButton: {fileID: 447508394284059837}
-  purchaseMenu: {fileID: 819873344070439177}
 --- !u!1 &447508393369722767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,6 +2574,7 @@ MonoBehaviour:
   purchaseNameText: {fileID: 7460992431977563428}
   purchaseText: {fileID: 1002378663871275884}
   purchasePriceText: {fileID: 1315430817640785453}
+  confirmPurchaseButton: {fileID: 1822218110023372693}
 --- !u!1 &1760646027615437084
 GameObject:
   m_ObjectHideFlags: 0
