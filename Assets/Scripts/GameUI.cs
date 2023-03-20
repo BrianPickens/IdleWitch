@@ -7,13 +7,12 @@ using System;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI totalSoulsDisplay;
-
     [SerializeField] private PurchaseConfirmation purchaseMenu;
 
+    [SerializeField] private SoulsHolder soulsHolder;
     public void UpdateTotalSoulsDisplay(float _numSouls)
     {
-        totalSoulsDisplay.text = Mathf.RoundToInt(_numSouls).ToString();
+        soulsHolder.UpdateSouls(_numSouls);
     }
 
     public PurchaseConfirmation GetPurchaseMenu()

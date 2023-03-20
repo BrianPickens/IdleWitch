@@ -10,6 +10,8 @@ public class Menus : MonoBehaviour
 
     private enum MenuType { Construction, Detection, Offer, None }
 
+    [SerializeField] private Animator tableAnimator;
+
     [SerializeField] private Menu constructionMenu;
     [SerializeField] private Menu detectionMenu;
     [SerializeField] private Menu offersMenu;
@@ -69,6 +71,7 @@ public class Menus : MonoBehaviour
         if (currentMenuType == MenuType.None)
         {
             constructionMenu.OpenMenu();
+            tableAnimator.SetBool("Open", true);
             currentMenuType = MenuType.Construction;
         }
         else if (currentMenuType != MenuType.Construction)
@@ -79,6 +82,7 @@ public class Menus : MonoBehaviour
         else
         {
             constructionMenu.CloseMenu();
+            tableAnimator.SetBool("Open", false);
             currentMenuType = MenuType.None;
         }
     }
@@ -88,6 +92,7 @@ public class Menus : MonoBehaviour
         if (currentMenuType == MenuType.None)
         {
             detectionMenu.OpenMenu();
+            tableAnimator.SetBool("Open", true);
             currentMenuType = MenuType.Detection;
         }
         else if (currentMenuType != MenuType.Detection)
@@ -98,6 +103,7 @@ public class Menus : MonoBehaviour
         else
         {
             detectionMenu.CloseMenu();
+            tableAnimator.SetBool("Open", false);
             currentMenuType = MenuType.None;
         }
     }
@@ -107,6 +113,7 @@ public class Menus : MonoBehaviour
         if (currentMenuType == MenuType.None)
         {
             offersMenu.OpenMenu();
+            tableAnimator.SetBool("Open", true);
             currentMenuType = MenuType.Offer;
         }
         else if (currentMenuType != MenuType.Offer)
@@ -117,6 +124,7 @@ public class Menus : MonoBehaviour
         else
         {
             offersMenu.CloseMenu();
+            tableAnimator.SetBool("Open", false);
             currentMenuType = MenuType.None;
         }
     }

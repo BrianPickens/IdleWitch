@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Menus allMenus;
 
     [SerializeField] private SoulsCreator soulsCreator;
-    [SerializeField] private Transform soulsTarget;
+    [SerializeField] private RectTransform soulsTarget;
 
     //test
     private float currentFireTimer;
@@ -81,26 +81,26 @@ public class GameController : MonoBehaviour
         UpdateUI();
 
         //test
-        currentFireTimer -= Time.deltaTime;
-        if (currentFireTimer <= 0f)
-        {
-            currentFireTimer = 5f;
-            List<SoulsObjectBase> fireTargets = new List<SoulsObjectBase>();
-            for (int i = 0; i < baseAttractions.Count; i++)
-            {
-                if (baseAttractions[i].IsBuilt() && !baseAttractions[i].IsOnFire() && !baseAttractions[i].IsDestroyed())
-                {
-                    Debug.LogError("ADDED: " + baseAttractions[i].GetID());
-                    fireTargets.Add(baseAttractions[i]);
-                }
-            }
+        //currentFireTimer -= Time.deltaTime;
+        //if (currentFireTimer <= 0f)
+        //{
+        //    currentFireTimer = 5f;
+        //    List<SoulsObjectBase> fireTargets = new List<SoulsObjectBase>();
+        //    for (int i = 0; i < baseAttractions.Count; i++)
+        //    {
+        //        if (baseAttractions[i].IsBuilt() && !baseAttractions[i].IsOnFire() && !baseAttractions[i].IsDestroyed())
+        //        {
+        //            Debug.LogError("ADDED: " + baseAttractions[i].GetID());
+        //            fireTargets.Add(baseAttractions[i]);
+        //        }
+        //    }
 
-            if (fireTargets.Count > 0)
-            {
-                int index = UnityEngine.Random.Range(0, fireTargets.Count);
-                fireTargets[index].SetAttractionOnFire();
-            }
-        }
+        //    if (fireTargets.Count > 0)
+        //    {
+        //        int index = UnityEngine.Random.Range(0, fireTargets.Count);
+        //        fireTargets[index].SetAttractionOnFire();
+        //    }
+        //}
         //end test
     }
 
@@ -111,9 +111,7 @@ public class GameController : MonoBehaviour
 
     private void CollectGatheredSouls(int _numSouls, Vector2 _gatherPoint)
     {
-        //totalSouls += _numSouls;
-        soulsCreator.CreateSouls(_gatherPoint, soulsTarget.position, _numSouls, AddSoul);
-        //PlayerPrefsSavingLoading.Instance.SaveInt(ConstantStrings.totalSouls, totalSouls);
+        soulsCreator.CreateSouls(_gatherPoint, Camera.main.ScreenToWorldPoint(soulsTarget.transform.position), _numSouls, AddSoul);
     }
 
     private void AddSoul()
