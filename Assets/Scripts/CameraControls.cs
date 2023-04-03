@@ -81,11 +81,13 @@ public class CameraControls : MonoBehaviour
         Camera.main.transform.position = newPosition;
     }
 
+    //called by button for test
     public void ZoomIn()
     {
         Zoom(1);
     }
 
+    //called by button for test
     public void ZoomOut()
     {
         Zoom(-1);

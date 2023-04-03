@@ -18,10 +18,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private SoulsCreator soulsCreator;
     [SerializeField] private RectTransform soulsTarget;
 
-    //test
+    [SerializeField] private float fireTimer;
     private float currentFireTimer;
-    //end test
-
+    private DateTime nextFireCheck;
+    private DateTime lastFireCheckTime;
 
     private void Start()
     {
@@ -31,6 +31,8 @@ public class GameController : MonoBehaviour
         InitializeAttractions();
 
         InitializeMenus();
+
+        InitializeFireCheckTime();
 
         LoadData();
 
@@ -79,7 +81,7 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         UpdateUI();
-
+        HandleFireChances();
         //test
         //currentFireTimer -= Time.deltaTime;
         //if (currentFireTimer <= 0f)
@@ -152,6 +154,69 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void InitializeFireCheckTime()
+    {
+        if (PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.fireCheckTime) != string.Empty)
+        {
+            long temp = Convert.ToInt64(PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.lastFireCheckTime));
+            lastFireCheckTime = DateTime.FromBinary(temp);
+
+            DateTime currentTime = DateTime.Now;
+            double numSecondsSinceLastFireCheck = 0f;
+
+            int numTimesToCheck = 0;
+            TimeSpan timeSinceLastCheck = currentTime - lastFireCheckTime;
+            if (timeSinceLastCheck.TotalSeconds > double.MaxValue)
+            {
+                numSecondsSinceLastFireCheck = double.MaxValue;
+            }
+            else
+            {
+                numSecondsSinceLastFireCheck = timeSinceLastCheck.TotalSeconds;
+            }
+
+
+
+
+
+
+        }
+        else
+        {
+            nextFireCheck = DateTime.Now.AddSeconds(fireTimer);
+            PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.fireCheckTime, nextFireCheck.ToBinary().ToString());
+            PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.lastFireCheckTime, nextFireCheck.ToBinary().ToString());
+        }
+    }
+
+    private void HandleFireChances()
+    {
+
+
+        //test
+        //currentFireTimer -= Time.deltaTime;
+        //if (currentFireTimer <= 0f)
+        //{
+        //    currentFireTimer = 5f;
+        //    List<SoulsObjectBase> fireTargets = new List<SoulsObjectBase>();
+        //    for (int i = 0; i < baseAttractions.Count; i++)
+        //    {
+        //        if (baseAttractions[i].IsBuilt() && !baseAttractions[i].IsOnFire() && !baseAttractions[i].IsDestroyed())
+        //        {
+        //            Debug.LogError("ADDED: " + baseAttractions[i].GetID());
+        //            fireTargets.Add(baseAttractions[i]);
+        //        }
+        //    }
+
+        //    if (fireTargets.Count > 0)
+        //    {
+        //        int index = UnityEngine.Random.Range(0, fireTargets.Count);
+        //        fireTargets[index].SetAttractionOnFire();
+        //    }
+        //}
+        //end test
     }
 
 

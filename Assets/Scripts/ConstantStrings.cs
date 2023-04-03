@@ -29,6 +29,9 @@ public class ConstantStrings : MonoBehaviour
 
     public const string collectionTime = "collectionTime";
 
+    public const string fireCheckTime = "fireCheckTime";
+    public const string lastFireCheckTime = "lastFireCheckTime";
+
     public const string built = "built";
     public const string onFire = "onFire";
     public const string destroyed = "destroyed";
