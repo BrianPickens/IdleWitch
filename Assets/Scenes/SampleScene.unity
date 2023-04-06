@@ -1553,6 +1553,7 @@ MonoBehaviour:
   allMenus: {fileID: 1633556944}
   soulsCreator: {fileID: 1976824229}
   soulsTarget: {fileID: 1216027370}
+  fireTimer: 10
 --- !u!114 &1390466013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5336421242787369057, guid: 708dc50deae7014499d02353f56868cf, type: 3}
