@@ -627,6 +627,32 @@ MonoBehaviour:
   baseCauldronDescription: baseCauldron
   baseHouseDescription: baseHouse
   houseExpansion3Description: So many house additions
+  candyBasket1Chance: 4
+  candyBasket2Chance: 4
+  candySignChance: 4
+  bigCauldronChance: 4
+  candifyHouse1Chance: 2
+  candifyHouse2Chance: 2
+  houseExpansion1Chance: 2
+  houseExpansion2Chance: 2
+  ballPitChance: 4
+  dronesChance: 4
+  ponyChance: 4
+  arcadeChance: 4
+  tRexChance: 4
+  poolChance: 4
+  neonSignChance: 4
+  rockConcertChance: 4
+  rollerCoasterChance: 4
+  witchBroomChance: 4
+  mcDonaldsChance: 4
+  candySmellsChance: 4
+  duckFeetChance: 2
+  freePuppiesChance: 4
+  balloonsChance: 4
+  baseCauldronChance: 5
+  baseHouseChance: 5
+  houseExpansion3Chance: 2
 --- !u!4 &518842652
 Transform:
   m_ObjectHideFlags: 0
@@ -1143,6 +1169,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af49a703f46a8c499f96ef463d1f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1185798760 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8862880560199566590, guid: e0d04acf54453604386a7fd4d8295766, type: 3}
+  m_PrefabInstance: {fileID: 447508392678240086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1201106305 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5767357060407803868, guid: 708dc50deae7014499d02353f56868cf, type: 3}
@@ -1234,6 +1271,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218294792}
   m_CullTransparentMesh: 1
+--- !u!114 &1223945906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5689371773334669160, guid: e0d04acf54453604386a7fd4d8295766, type: 3}
+  m_PrefabInstance: {fileID: 447508392678240086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1239707209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1751,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af49a703f46a8c499f96ef463d1f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1720509236 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8048980984616983291, guid: e0d04acf54453604386a7fd4d8295766, type: 3}
+  m_PrefabInstance: {fileID: 447508392678240086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1748489112 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2343147907207440936, guid: 708dc50deae7014499d02353f56868cf, type: 3}
@@ -2084,7 +2143,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   purchaseMenu: {fileID: 447508392678240087}
+  mobNotification: {fileID: 447508392678240089}
   soulsHolder: {fileID: 447508392678240088}
+  fireChanceText: {fileID: 1223945906}
+  fireChanceFill: {fileID: 1185798760}
+  fireChanceTimerText: {fileID: 1720509236}
 --- !u!114 &2118401066 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5469648847406346052, guid: 708dc50deae7014499d02353f56868cf, type: 3}
@@ -2737,5 +2800,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56e432fcdcace6a4ebbabc3c05864ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &447508392678240089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3909713330568368472, guid: e0d04acf54453604386a7fd4d8295766, type: 3}
+  m_PrefabInstance: {fileID: 447508392678240086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5c9a1ad5edaf34b852061e1709ce01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

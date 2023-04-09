@@ -29,7 +29,7 @@ public class ConstantStrings : MonoBehaviour
 
     public const string collectionTime = "collectionTime";
 
-    public const string lastFireCheckTime = "lastFireCheckTime";
+    public const string fireCheckTime = "fireCheckTime";
 
     public const string built = "built";
     public const string onFire = "onFire";
@@ -62,6 +62,7 @@ public class ConstantStrings : MonoBehaviour
     private string baseHouseID = "baseHouse";
     private string houseExpansion3ID = "houseExpansion3";
 
+    [Header("DISPLAY NAMES")]
     [SerializeField] private string candyBasket1Name = "candyBasket1";
     [SerializeField] private string candyBasket2Name = "candyBasket2";
     [SerializeField] private string candySignName = "candySign";
@@ -89,6 +90,7 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private string baseHouseName = "baseHouse";
     [SerializeField] private string houseExpansion3Name = "houseExpansion3";
 
+    [Header("PURCHASE PRICES")]
     [SerializeField] private int candyBasket1Price = 20;
     [SerializeField] private int candyBasket2Price = 20;
     [SerializeField] private int candySignPrice = 20;
@@ -116,6 +118,7 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private int baseHousePrice = 20;
     [SerializeField] private int houseExpansion3Price = 20;
 
+    [Header("STORE DESCRIPTIONS")]
     [SerializeField] private string candyBasket1Description = "candyBasket1";
     [SerializeField] private string candyBasket2Description = "candyBasket2";
     [SerializeField] private string candySignDescription = "candySign";
@@ -142,6 +145,34 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private string baseCauldronDescription = "baseCauldron";
     [SerializeField] private string baseHouseDescription = "baseHouse";
     [SerializeField] private string houseExpansion3Description = "houseExpansion3";
+
+    [Header("MOB CHANCE INCREASE")]
+    [SerializeField] private int candyBasket1Chance = 4;
+    [SerializeField] private int candyBasket2Chance = 4;
+    [SerializeField] private int candySignChance = 4;
+    [SerializeField] private int bigCauldronChance = 4;
+    [SerializeField] private int candifyHouse1Chance = 4;
+    [SerializeField] private int candifyHouse2Chance = 4;
+    [SerializeField] private int houseExpansion1Chance = 4;
+    [SerializeField] private int houseExpansion2Chance = 4;
+    [SerializeField] private int ballPitChance = 4;
+    [SerializeField] private int dronesChance = 4;
+    [SerializeField] private int ponyChance = 4;
+    [SerializeField] private int arcadeChance = 4;
+    [SerializeField] private int tRexChance = 4;
+    [SerializeField] private int poolChance = 4;
+    [SerializeField] private int neonSignChance = 4;
+    [SerializeField] private int rockConcertChance = 4;
+    [SerializeField] private int rollerCoasterChance = 4;
+    [SerializeField] private int witchBroomChance = 4;
+    [SerializeField] private int mcDonaldsChance = 4;
+    [SerializeField] private int candySmellsChance = 4;
+    [SerializeField] private int duckFeetChance = 4;
+    [SerializeField] private int freePuppiesChance = 4;
+    [SerializeField] private int balloonsChance = 4;
+    [SerializeField] private int baseCauldronChance = 4;
+    [SerializeField] private int baseHouseChance = 4;
+    [SerializeField] private int houseExpansion3Chance = 4;
 
     public string GetDisplayName(PurchaseItemType _type)
     {
@@ -613,5 +644,123 @@ public class ConstantStrings : MonoBehaviour
         }
 
         return displayDescription;
+    }
+
+    public int GetItemChanceChange(PurchaseItemType _type)
+    {
+        int chanceChange = 0;
+
+        switch (_type)
+        {
+            case PurchaseItemType.CandyBasket1:
+                chanceChange = candyBasket1Chance;
+                break;
+
+            case PurchaseItemType.CandyBasket2:
+                chanceChange = candyBasket2Chance;
+                break;
+
+            case PurchaseItemType.CandySign:
+                chanceChange = candySignChance;
+                break;
+
+            case PurchaseItemType.BigCauldron:
+                chanceChange = bigCauldronChance;
+                break;
+
+            case PurchaseItemType.CandifyHouse1:
+                chanceChange = candifyHouse1Chance;
+                break;
+
+            case PurchaseItemType.CandifyHouse2:
+                chanceChange = candifyHouse2Chance;
+                break;
+
+            case PurchaseItemType.HouseExpansion1:
+                chanceChange = houseExpansion1Chance;
+                break;
+
+            case PurchaseItemType.HouseExpansion2:
+                chanceChange = houseExpansion2Chance;
+                break;
+
+            case PurchaseItemType.BallPit:
+                chanceChange = ballPitChance;
+                break;
+
+            case PurchaseItemType.Drones:
+                chanceChange = dronesChance;
+                break;
+
+            case PurchaseItemType.Pony:
+                chanceChange = ponyChance;
+                break;
+
+            case PurchaseItemType.Arcade:
+                chanceChange = arcadeChance;
+                break;
+
+            case PurchaseItemType.TRex:
+                chanceChange = tRexChance;
+                break;
+
+            case PurchaseItemType.Pool:
+                chanceChange = poolChance;
+                break;
+
+            case PurchaseItemType.NeonSign:
+                chanceChange = neonSignChance;
+                break;
+
+            case PurchaseItemType.RockConcert:
+                chanceChange = rockConcertChance;
+                break;
+
+            case PurchaseItemType.RollerCoaster:
+                chanceChange = rollerCoasterChance;
+                break;
+
+            case PurchaseItemType.WitchBroom:
+                chanceChange = witchBroomChance;
+                break;
+
+            case PurchaseItemType.McDonalds:
+                chanceChange = mcDonaldsChance;
+                break;
+
+            case PurchaseItemType.CandySmells:
+                chanceChange = candySmellsChance;
+                break;
+
+            case PurchaseItemType.DuckFeet:
+                chanceChange = duckFeetChance;
+                break;
+
+            case PurchaseItemType.FreePuppies:
+                chanceChange = freePuppiesChance;
+                break;
+
+            case PurchaseItemType.Balloons:
+                chanceChange = balloonsChance;
+                break;
+
+            case PurchaseItemType.BaseCauldron:
+                chanceChange = baseCauldronChance;
+                break;
+
+            case PurchaseItemType.BaseHouse:
+                chanceChange = baseHouseChance;
+                break;
+
+            case PurchaseItemType.HouseExpansion3:
+                chanceChange = houseExpansion3Chance;
+                break;
+
+            default:
+                chanceChange = 0;
+                break;
+        }
+
+        return chanceChange;
     }
 }
