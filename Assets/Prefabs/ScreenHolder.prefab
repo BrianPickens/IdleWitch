@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTransform: {fileID: 3315470339751714478}
-  moveTime: 0.5
+  moveTime: 0.4
 --- !u!114 &4670496526938129026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,6 +852,7 @@ MonoBehaviour:
   soulPrefab: {fileID: 4793195182909688546}
   xVariance: 1
   yVariance: 1
+  createDelay: 0.01
 --- !u!1 &5071062174030560477
 GameObject:
   m_ObjectHideFlags: 0

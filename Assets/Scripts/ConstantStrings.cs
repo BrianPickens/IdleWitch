@@ -4,7 +4,9 @@ using UnityEngine;
 
 public enum PurchaseItemType { CandyBasket1, CandyBasket2, CandySign, BigCauldron, CandifyHouse1, CandifyHouse2, HouseExpansion1,
     HouseExpansion2, BallPit, Drones, Pony, Arcade, TRex, Pool, NeonSign, RockConcert, RollerCoaster,
-    WitchBroom, McDonalds, CandySmells, DuckFeet, FreePuppies, Balloons, BaseCauldron, BaseHouse, HouseExpansion3 }
+    WitchBroom, McDonalds, CandySmells, DuckFeet, FreePuppies, Balloons, BaseCauldron, BaseHouse, HouseExpansion3,
+    DecoyChildren, Telescope, FireInsurance, RigElection, DecoyWitchHut, FrameWerewolves, ChangeTrailSigns, HideTrueIdentity,
+    YourSoul, SoulMateSoul, FirstBorn, FavoriteMemory, FiveYears, PowerOfAttorney, LeftFromRight, SocialSecurity}
 
 public class ConstantStrings : MonoBehaviour
 {
@@ -61,6 +63,23 @@ public class ConstantStrings : MonoBehaviour
     private string baseCauldronID = "baseCauldron";
     private string baseHouseID = "baseHouse";
     private string houseExpansion3ID = "houseExpansion3";
+    private string decoyChildrenID = "decoyChildren";
+    private string telescopeID = "telescope";
+    private string fireInsuranceID = "fireInsurance";
+    private string rigElectionID = "rigElection";
+    private string decoyWitchHutID = "decoyWitchHut";
+    private string frameWerewolvesID = "frameWerewolves";
+    private string changeTrailSignsID = "changeTrailSigns";
+    private string hideTrueIdentityID = "hideTrueIdentity";
+    private string yourSoulID = "yourSoul";
+    private string soulMateSoulID = "soulMateSoul";
+    private string firstBornID = "firstBorn";
+    private string favoriteMemoryID = "favoritMemory";
+    private string fiveYearsID = "fiveYears";
+    private string powerOfAttorneyID = "powerOfAttorney";
+    private string leftFromRightID = "leftFromRight";
+    private string socialSecurityID = "socialSecurity";
+
 
     [Header("DISPLAY NAMES")]
     [SerializeField] private string candyBasket1Name = "candyBasket1";
@@ -89,6 +108,23 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private string baseCauldronName = "baseCauldron";
     [SerializeField] private string baseHouseName = "baseHouse";
     [SerializeField] private string houseExpansion3Name = "houseExpansion3";
+    [SerializeField] private string decoyChildrenName = "decoyChildren";
+    [SerializeField] private string telescopeName = "telescope";
+    [SerializeField] private string fireInsuranceName = "fireInsurance";
+    [SerializeField] private string rigElectionName = "rigElection";
+    [SerializeField] private string decoyWitchHutName = "decoyWitchHut";
+    [SerializeField] private string frameWerewolvesName = "frameWerewolves";
+    [SerializeField] private string changeTrailSignsName = "changeTrailSigns";
+    [SerializeField] private string hideTrueIdentityName = "hideTrueIdentity";
+    [SerializeField] private string yourSoulName = "yourSoul";
+    [SerializeField] private string soulMateSoulName = "soulMateSoul";
+    [SerializeField] private string firstBornName = "firstBorn";
+    [SerializeField] private string favoriteMemoryName = "favoritMemory";
+    [SerializeField] private string fiveYearsName = "fiveYears";
+    [SerializeField] private string powerOfAttorneyName = "powerOfAttorney";
+    [SerializeField] private string leftFromRightName = "leftFromRight";
+    [SerializeField] private string socialSecurityName = "socialSecurity";
+
 
     [Header("PURCHASE PRICES")]
     [SerializeField] private int candyBasket1Price = 20;
@@ -117,6 +153,23 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private int baseCauldronPrice = 20;
     [SerializeField] private int baseHousePrice = 20;
     [SerializeField] private int houseExpansion3Price = 20;
+    [SerializeField] private int decoyChildrenPrice = 20;
+    [SerializeField] private int telescopePrice = 20;
+    [SerializeField] private int fireInsurancePrice = 20;
+    [SerializeField] private int rigElectionPrice = 20;
+    [SerializeField] private int decoyWitchHutPrice = 20;
+    [SerializeField] private int frameWerewolvesPrice = 20;
+    [SerializeField] private int changeTrailSignsPrice = 20;
+    [SerializeField] private int hideTrueIdentityPrice = 20;
+    [SerializeField] private int yourSoulPrice = 20;
+    [SerializeField] private int soulMateSoulPrice = 20;
+    [SerializeField] private int firstBornPrice = 20;
+    [SerializeField] private int favoriteMemoryPrice = 20;
+    [SerializeField] private int fiveYearsPrice = 20;
+    [SerializeField] private int powerOfAttorneyPrice = 20;
+    [SerializeField] private int leftFromRightPrice = 20;
+    [SerializeField] private int socialSecurityPrice = 20;
+
 
     [Header("STORE DESCRIPTIONS")]
     [SerializeField] private string candyBasket1Description = "candyBasket1";
@@ -145,6 +198,23 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private string baseCauldronDescription = "baseCauldron";
     [SerializeField] private string baseHouseDescription = "baseHouse";
     [SerializeField] private string houseExpansion3Description = "houseExpansion3";
+    [SerializeField] private string decoyChildrenDescription = "decoyChildren";
+    [SerializeField] private string telescopeDescription = "telescope";
+    [SerializeField] private string fireInsuranceDescription = "fireInsurance";
+    [SerializeField] private string rigElectionDescription = "rigElection";
+    [SerializeField] private string decoyWitchHutDescription = "decoyWitchHut";
+    [SerializeField] private string frameWerewolvesDescription = "frameWerewolves";
+    [SerializeField] private string changeTrailSignsDescription = "changeTrailSigns";
+    [SerializeField] private string hideTrueIdentityDescription = "hideTrueIdentity";
+    [SerializeField] private string yourSoulDescription = "yourSoul";
+    [SerializeField] private string soulMateSoulDescription = "soulMateSoul";
+    [SerializeField] private string firstBornDescription = "firstBorn";
+    [SerializeField] private string favoriteMemoryDescription = "favoritMemory";
+    [SerializeField] private string fiveYearsDescription = "fiveYears";
+    [SerializeField] private string powerOfAttorneyDescription = "powerOfAttorney";
+    [SerializeField] private string leftFromRightDescription = "leftFromRight";
+    [SerializeField] private string socialSecurityDescription = "socialSecurity";
+
 
     [Header("MOB CHANCE INCREASE")]
     [SerializeField] private int candyBasket1Chance = 4;
@@ -173,6 +243,14 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private int baseCauldronChance = 4;
     [SerializeField] private int baseHouseChance = 4;
     [SerializeField] private int houseExpansion3Chance = 4;
+    [SerializeField] private int decoyChildrenChance = -5;
+    [SerializeField] private int telescopeChance = -5;
+    [SerializeField] private int fireInsuranceChance = -5;
+    [SerializeField] private int rigElectionChance = -5;
+    [SerializeField] private int decoyWitchHutChance = -5;
+    [SerializeField] private int frameWerewolvesChance = -5;
+    [SerializeField] private int changeTrailSignsChance = -5;
+    [SerializeField] private int hideTrueIdentityChance = -5;
 
     public string GetDisplayName(PurchaseItemType _type)
     {
@@ -282,6 +360,70 @@ public class ConstantStrings : MonoBehaviour
 
             case PurchaseItemType.HouseExpansion3:
                 displayNameString = houseExpansion3Name;
+                break;
+
+            case PurchaseItemType.DecoyChildren:
+                displayNameString = decoyChildrenName;
+                break;
+
+            case PurchaseItemType.Telescope:
+                displayNameString = telescopeName;
+                break;
+
+            case PurchaseItemType.FireInsurance:
+                displayNameString = fireInsuranceName;
+                break;
+
+            case PurchaseItemType.RigElection:
+                displayNameString = rigElectionName;
+                break;
+
+            case PurchaseItemType.DecoyWitchHut:
+                displayNameString = decoyWitchHutName;
+                break;
+
+            case PurchaseItemType.FrameWerewolves:
+                displayNameString = frameWerewolvesName;
+                break;
+
+            case PurchaseItemType.ChangeTrailSigns:
+                displayNameString = changeTrailSignsName;
+                break;
+
+            case PurchaseItemType.HideTrueIdentity:
+                displayNameString = hideTrueIdentityName;
+                break;
+
+            case PurchaseItemType.YourSoul:
+                displayNameString = yourSoulName;
+                break;
+
+            case PurchaseItemType.SoulMateSoul:
+                displayNameString = soulMateSoulName;
+                break;
+
+            case PurchaseItemType.FirstBorn:
+                displayNameString = firstBornName;
+                break;
+
+            case PurchaseItemType.FavoriteMemory:
+                displayNameString = favoriteMemoryName;
+                break;
+
+            case PurchaseItemType.FiveYears:
+                displayNameString = fiveYearsName;
+                break;
+
+            case PurchaseItemType.PowerOfAttorney:
+                displayNameString = powerOfAttorneyName;
+                break;
+
+            case PurchaseItemType.LeftFromRight:
+                displayNameString = leftFromRightName;
+                break;
+
+            case PurchaseItemType.SocialSecurity:
+                displayNameString = socialSecurityName;
                 break;
 
             default:
@@ -402,6 +544,70 @@ public class ConstantStrings : MonoBehaviour
                 itemID = houseExpansion3ID;
                 break;
 
+            case PurchaseItemType.DecoyChildren:
+                itemID = decoyChildrenID;
+                break;
+
+            case PurchaseItemType.Telescope:
+                itemID = telescopeID;
+                break;
+
+            case PurchaseItemType.FireInsurance:
+                itemID = fireInsuranceID;
+                break;
+
+            case PurchaseItemType.RigElection:
+                itemID = rigElectionID;
+                break;
+
+            case PurchaseItemType.DecoyWitchHut:
+                itemID = decoyWitchHutID;
+                break;
+
+            case PurchaseItemType.FrameWerewolves:
+                itemID = frameWerewolvesID;
+                break;
+
+            case PurchaseItemType.ChangeTrailSigns:
+                itemID = changeTrailSignsID;
+                break;
+
+            case PurchaseItemType.HideTrueIdentity:
+                itemID = hideTrueIdentityID;
+                break;
+
+            case PurchaseItemType.YourSoul:
+                itemID = yourSoulID;
+                break;
+
+            case PurchaseItemType.SoulMateSoul:
+                itemID = soulMateSoulID;
+                break;
+
+            case PurchaseItemType.FirstBorn:
+                itemID = firstBornID;
+                break;
+
+            case PurchaseItemType.FavoriteMemory:
+                itemID = favoriteMemoryID;
+                break;
+
+            case PurchaseItemType.FiveYears:
+                itemID = fiveYearsID;
+                break;
+
+            case PurchaseItemType.PowerOfAttorney:
+                itemID = powerOfAttorneyID;
+                break;
+
+            case PurchaseItemType.LeftFromRight:
+                itemID = leftFromRightID;
+                break;
+
+            case PurchaseItemType.SocialSecurity:
+                itemID = socialSecurityID;
+                break;
+
             default:
                 itemID = "";
                 break;
@@ -518,6 +724,70 @@ public class ConstantStrings : MonoBehaviour
 
             case PurchaseItemType.HouseExpansion3:
                 itemPrice = houseExpansion3Price;
+                break;
+
+            case PurchaseItemType.DecoyChildren:
+                itemPrice = decoyChildrenPrice;
+                break;
+
+            case PurchaseItemType.Telescope:
+                itemPrice = telescopePrice;
+                break;
+
+            case PurchaseItemType.FireInsurance:
+                itemPrice = fireInsurancePrice;
+                break;
+
+            case PurchaseItemType.RigElection:
+                itemPrice = rigElectionPrice;
+                break;
+
+            case PurchaseItemType.DecoyWitchHut:
+                itemPrice = decoyWitchHutPrice;
+                break;
+
+            case PurchaseItemType.FrameWerewolves:
+                itemPrice = frameWerewolvesPrice;
+                break;
+
+            case PurchaseItemType.ChangeTrailSigns:
+                itemPrice = changeTrailSignsPrice;
+                break;
+
+            case PurchaseItemType.HideTrueIdentity:
+                itemPrice = hideTrueIdentityPrice;
+                break;
+
+            case PurchaseItemType.YourSoul:
+                itemPrice = yourSoulPrice;
+                break;
+
+            case PurchaseItemType.SoulMateSoul:
+                itemPrice = soulMateSoulPrice;
+                break;
+
+            case PurchaseItemType.FirstBorn:
+                itemPrice = firstBornPrice;
+                break;
+
+            case PurchaseItemType.FavoriteMemory:
+                itemPrice = favoriteMemoryPrice;
+                break;
+
+            case PurchaseItemType.FiveYears:
+                itemPrice = fiveYearsPrice;
+                break;
+
+            case PurchaseItemType.PowerOfAttorney:
+                itemPrice = powerOfAttorneyPrice;
+                break;
+
+            case PurchaseItemType.LeftFromRight:
+                itemPrice = leftFromRightPrice;
+                break;
+
+            case PurchaseItemType.SocialSecurity:
+                itemPrice = socialSecurityPrice;
                 break;
 
             default:
@@ -638,6 +908,70 @@ public class ConstantStrings : MonoBehaviour
                 displayDescription = houseExpansion3Description;
                 break;
 
+            case PurchaseItemType.DecoyChildren:
+                displayDescription = decoyChildrenDescription;
+                break;
+
+            case PurchaseItemType.Telescope:
+                displayDescription = telescopeDescription;
+                break;
+
+            case PurchaseItemType.FireInsurance:
+                displayDescription = fireInsuranceDescription;
+                break;
+
+            case PurchaseItemType.RigElection:
+                displayDescription = rigElectionDescription;
+                break;
+
+            case PurchaseItemType.DecoyWitchHut:
+                displayDescription = decoyWitchHutDescription;
+                break;
+
+            case PurchaseItemType.FrameWerewolves:
+                displayDescription = frameWerewolvesDescription;
+                break;
+
+            case PurchaseItemType.ChangeTrailSigns:
+                displayDescription = changeTrailSignsDescription;
+                break;
+
+            case PurchaseItemType.HideTrueIdentity:
+                displayDescription = hideTrueIdentityDescription;
+                break;
+
+            case PurchaseItemType.YourSoul:
+                displayDescription = yourSoulDescription;
+                break;
+
+            case PurchaseItemType.SoulMateSoul:
+                displayDescription = soulMateSoulDescription;
+                break;
+
+            case PurchaseItemType.FirstBorn:
+                displayDescription = firstBornDescription;
+                break;
+
+            case PurchaseItemType.FavoriteMemory:
+                displayDescription = favoriteMemoryDescription;
+                break;
+
+            case PurchaseItemType.FiveYears:
+                displayDescription = fiveYearsDescription;
+                break;
+
+            case PurchaseItemType.PowerOfAttorney:
+                displayDescription = powerOfAttorneyDescription;
+                break;
+
+            case PurchaseItemType.LeftFromRight:
+                displayDescription = leftFromRightDescription;
+                break;
+
+            case PurchaseItemType.SocialSecurity:
+                displayDescription = socialSecurityDescription;
+                break;
+
             default:
                 displayDescription = "";
                 break;
@@ -754,6 +1088,38 @@ public class ConstantStrings : MonoBehaviour
 
             case PurchaseItemType.HouseExpansion3:
                 chanceChange = houseExpansion3Chance;
+                break;
+
+            case PurchaseItemType.DecoyChildren:
+                chanceChange = decoyChildrenChance;
+                break;
+
+            case PurchaseItemType.Telescope:
+                chanceChange = telescopeChance;
+                break;
+
+            case PurchaseItemType.FireInsurance:
+                chanceChange = fireInsuranceChance;
+                break;
+
+            case PurchaseItemType.RigElection:
+                chanceChange = rigElectionChance;
+                break;
+
+            case PurchaseItemType.DecoyWitchHut:
+                chanceChange = decoyWitchHutChance;
+                break;
+
+            case PurchaseItemType.FrameWerewolves:
+                chanceChange = frameWerewolvesChance;
+                break;
+
+            case PurchaseItemType.ChangeTrailSigns:
+                chanceChange = changeTrailSignsChance;
+                break;
+
+            case PurchaseItemType.HideTrueIdentity:
+                chanceChange = hideTrueIdentityChance;
                 break;
 
             default:

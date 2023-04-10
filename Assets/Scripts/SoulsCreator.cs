@@ -8,6 +8,7 @@ public class SoulsCreator : MonoBehaviour
     [SerializeField] private FlyingSoul soulPrefab;
     [SerializeField] private float xVariance;
     [SerializeField] private float yVariance;
+    [SerializeField] private float createDelay;
 
     public void CreateSouls(Vector2 _startPosition, Vector2 _endPosition, int _numSouls, Action _callback)
     {
@@ -24,7 +25,7 @@ public class SoulsCreator : MonoBehaviour
                 UnityEngine.Random.Range(_startPosition.y, _endPosition.y) + UnityEngine.Random.Range(-yVariance, yVariance));
 
             newSoul.InitializeSoul(_startPosition, newMidPoint, _endPosition, _callback);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(createDelay);
         }
     }
 

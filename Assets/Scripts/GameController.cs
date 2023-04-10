@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private List<SoulsObjectBase> allAttractions = new List<SoulsObjectBase>();
     [SerializeField] private List<SoulsObjectBase> baseAttractions = new List<SoulsObjectBase>();
+    [SerializeField] private List<DetectionObject> allDetectionObjects = new List<DetectionObject>();
+    [SerializeField] private List<OffersObject> allOffersObjects = new List<OffersObject>();
 
     [SerializeField] private Menus allMenus;
 
@@ -28,6 +30,10 @@ public class GameController : MonoBehaviour
         InitializeActions();
 
         InitializeAttractions();
+
+        InitializeDetection();
+
+        InitializeOffers();
 
         InitializeMenus();
 
@@ -57,6 +63,22 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < allAttractions.Count; i++)
         {
             allAttractions[i].InitializeRebuild(OnRebuild, gameUI.GetPurchaseMenu());
+        }
+    }
+
+    private void InitializeDetection()
+    {
+        for (int i = 0; i < allDetectionObjects.Count; i++)
+        {
+            allDetectionObjects[i].InitializeBuildDetection();
+        }
+    }
+
+    private void InitializeOffers()
+    {
+        for (int i = 0; i < allOffersObjects.Count; i++)
+        {
+            allOffersObjects[i].InitializeOfferTaken();
         }
     }
 
@@ -114,6 +136,15 @@ public class GameController : MonoBehaviour
             if (allAttractions[i].GetID() == _ID)
             {
                 allAttractions[i].BuildAttraction();
+                break;
+            }
+        }
+
+        for (int i = 0; i < allDetectionObjects.Count; i++)
+        {
+            if (allDetectionObjects[i].GetID() == _ID)
+            {
+                allDetectionObjects[i].BuildDetection();
                 break;
             }
         }
@@ -181,7 +212,15 @@ public class GameController : MonoBehaviour
             }
         }
 
-        //need to add reduction to total fire chance
+        for (int i = 0; i < allDetectionObjects.Count; i++)
+        {
+            if (allDetectionObjects[i].IsBuilt())
+            {
+                totalFireChance += ConstantStrings.Instance.GetItemChanceChange(allDetectionObjects[i].GetItemType());
+            }
+        }
+
+        totalFireChance = (int)Mathf.Clamp(totalFireChance, 0, 100);
 
         gameUI.UpdateFireChance(totalFireChance);
 
