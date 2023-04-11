@@ -25,6 +25,15 @@ public class PurchaseConfirmation : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void DisplayOfferPurchase(PurchaseItemType _type, Action _purchaseCallback)
+    {
+        purchaseNameText.text = ConstantStrings.Instance.GetDisplayName(_type);
+        purchasePriceText.text = "Yes!";
+        purchaseText.text = ConstantStrings.Instance.GetDisplayDescription(_type);
+        OnConfirmPurchase = _purchaseCallback;
+        gameObject.SetActive(true);
+    }
+
     public void DisplayPurchaseWithSoulsCheck(PurchaseItemType _type, Action _purchaseCallback)
     {
         purchaseNameText.text = ConstantStrings.Instance.GetDisplayName(_type);

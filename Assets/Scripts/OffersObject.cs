@@ -23,6 +23,11 @@ public class OffersObject : MonoBehaviour
         PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.built, true);
     }
 
+    public void SetOfferAvailableInStore()
+    {
+        PlayerPrefsSavingLoading.Instance.SaveBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.available, true);
+    }
+
     public string GetID()
     {
         return ConstantStrings.Instance.GetItemID(myItemType);
@@ -36,6 +41,11 @@ public class OffersObject : MonoBehaviour
     public bool IsBuilt()
     {
         return isBuilt;
+    }
+
+    public bool IsAvailableInStore()
+    {
+        return PlayerPrefsSavingLoading.Instance.LoadBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.available);
     }
 
 }

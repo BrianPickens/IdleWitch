@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
+public enum PurchaseButtonType { Contruction, Detection, Offer }
+
 public class PurchaseButton : MonoBehaviour
 {
 
@@ -12,6 +14,7 @@ public class PurchaseButton : MonoBehaviour
     private bool isOnFire;
     private bool isDestroyed;
 
+    [SerializeField] private PurchaseButtonType myButtonType;
     [SerializeField] private PurchaseItemType myItemType;
 
     private PurchaseConfirmation purchaseConfirmationMenu;
@@ -54,61 +57,89 @@ public class PurchaseButton : MonoBehaviour
         isOnFire = PlayerPrefsSavingLoading.Instance.LoadBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.onFire);
         isDestroyed = PlayerPrefsSavingLoading.Instance.LoadBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.destroyed);
 
-        if (isBuilt)
+        if (myButtonType == PurchaseButtonType.Contruction || myButtonType == PurchaseButtonType.Detection)
         {
-            myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
-            requirementText.text = "Purchased!";
+            if (isBuilt)
+            {
+                myButton.interactable = false;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = "Purchased!";
+            }
+            else if (!isBuilt && _currentSouls >= purchasePrice && PrerequisitesBuilt())
+            {
+                myButton.interactable = true;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = purchasePrice.ToString();
+            }
+            else if (!isBuilt && _currentSouls >= purchasePrice && !PrerequisitesBuilt())
+            {
+                myButton.interactable = false;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = "Requires: " + GetPrerequisiteName();
+            }
+            else if (!isBuilt && _currentSouls < purchasePrice && PrerequisitesBuilt())
+            {
+                myButton.interactable = false;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = purchasePrice.ToString();
+            }
+            else if (!isBuilt && _currentSouls < purchasePrice && !PrerequisitesBuilt())
+            {
+                myButton.interactable = false;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = "Requires: " + GetPrerequisiteName();
+            }
+            else
+            {
+                myButton.interactable = false;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = purchasePrice.ToString();
+            }
+
+            if (!isBuilt && IsPrerequisiteOnFire())
+            {
+                myButton.interactable = false;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = "Put Out Fire!";
+            }
+            else if (!isBuilt && IsPrerequisiteDestroyed())
+            {
+                myButton.interactable = false;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = "Rebuild First!";
+            }
         }
-        else if (!isBuilt && _currentSouls >= purchasePrice && PrerequisitesBuilt())
+        else if (myButtonType == PurchaseButtonType.Offer)
         {
-            myButton.interactable = true;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
-            requirementText.text = purchasePrice.ToString();
-        }
-        else if (!isBuilt && _currentSouls >= purchasePrice && !PrerequisitesBuilt())
-        {
-            myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
-            requirementText.text = "Requires: " + GetPrerequisiteName();
-        }
-        else if (!isBuilt && _currentSouls < purchasePrice && PrerequisitesBuilt())
-        {
-            myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
-            requirementText.text = purchasePrice.ToString();
-        }
-        else if (!isBuilt && _currentSouls < purchasePrice && !PrerequisitesBuilt())
-        {
-            myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
-            requirementText.text = "Requires: " + GetPrerequisiteName();
-        }
-        else
-        {
-            myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
-            requirementText.text = purchasePrice.ToString();
+            bool isAvailable = PlayerPrefsSavingLoading.Instance.LoadBool(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.available);
+            gameObject.SetActive(isAvailable);
+            
+            if (isBuilt)
+            {
+                myButton.interactable = false;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = "Purchased!";
+            }
+            else
+            {
+                myButton.interactable = true;
+                displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
+                requirementText.text = "";
+            }
         }
 
-        if (!isBuilt && IsPrerequisiteOnFire())
-        {
-            myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
-            requirementText.text = "Put Out Fire!";
-        }
-        else if (!isBuilt && IsPrerequisiteDestroyed())
-        {
-            myButton.interactable = false;
-            displayText.text = ConstantStrings.Instance.GetDisplayName(myItemType);
-            requirementText.text = "Rebuild First!";
-        }
-    
     }
 
     public void OnClick()
     {
-        purchaseConfirmationMenu.DisplayPurchase(myItemType, OnPurchasePressed);
+        if (myButtonType == PurchaseButtonType.Contruction || myButtonType == PurchaseButtonType.Detection)
+        {
+            purchaseConfirmationMenu.DisplayPurchase(myItemType, OnPurchasePressed);
+        }
+        else if (myButtonType == PurchaseButtonType.Offer)
+        {
+            purchaseConfirmationMenu.DisplayOfferPurchase(myItemType, OnPurchasePressed);
+        }
     }
 
     public void OnPurchasePressed()

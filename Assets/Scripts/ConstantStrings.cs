@@ -33,9 +33,12 @@ public class ConstantStrings : MonoBehaviour
 
     public const string fireCheckTime = "fireCheckTime";
 
+    public const string offerCheckTime = "offerCheckTime";
+
     public const string built = "built";
     public const string onFire = "onFire";
     public const string destroyed = "destroyed";
+    public const string available = "available";
 
     private string candyBasket1ID = "candyBasket1";
     private string candyBasket2ID = "candyBasket2";
@@ -251,6 +254,16 @@ public class ConstantStrings : MonoBehaviour
     [SerializeField] private int frameWerewolvesChance = -5;
     [SerializeField] private int changeTrailSignsChance = -5;
     [SerializeField] private int hideTrueIdentityChance = -5;
+
+    [Header("OFFERS SOUL AMOUNTS")]
+    [SerializeField] private int yourSoulSoulAmount = 200;
+    [SerializeField] private int soulMateSoulSoulAmount = 200;
+    [SerializeField] private int firstBornSoulAmount = 300;
+    [SerializeField] private int favoriteMemorySoulAmount = 300;
+    [SerializeField] private int fiveYearsSoulAmount = 300;
+    [SerializeField] private int powerOfAttorneySoulAmount = 400;
+    [SerializeField] private int leftFromRightSoulAmount = 400;
+    [SerializeField] private int socialSecuritySoulAmount = 400;
 
     public string GetDisplayName(PurchaseItemType _type)
     {
@@ -1128,5 +1141,51 @@ public class ConstantStrings : MonoBehaviour
         }
 
         return chanceChange;
+    }
+
+    public int GetOfferSoulAmount(PurchaseItemType _type)
+    {
+        int soulAmount = 0;
+
+        switch (_type)
+        {
+            case PurchaseItemType.YourSoul:
+                soulAmount = yourSoulSoulAmount;
+                break;
+
+            case PurchaseItemType.SoulMateSoul:
+                soulAmount = soulMateSoulSoulAmount;
+                break;
+
+            case PurchaseItemType.FirstBorn:
+                soulAmount = firstBornSoulAmount;
+                break;
+
+            case PurchaseItemType.FavoriteMemory:
+                soulAmount = favoriteMemorySoulAmount;
+                break;
+
+            case PurchaseItemType.FiveYears:
+                soulAmount = fiveYearsSoulAmount;
+                break;
+
+            case PurchaseItemType.PowerOfAttorney:
+                soulAmount = powerOfAttorneySoulAmount;
+                break;
+
+            case PurchaseItemType.LeftFromRight:
+                soulAmount = leftFromRightSoulAmount;
+                break;
+
+            case PurchaseItemType.SocialSecurity:
+                soulAmount = socialSecuritySoulAmount;
+                break;
+
+            default:
+                soulAmount = 0;
+                break;
+        }
+
+        return soulAmount;
     }
 }

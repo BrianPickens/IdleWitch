@@ -24,6 +24,10 @@ public class GameController : MonoBehaviour
     private DateTime fireCheckTime;
     private int totalFireChance;
 
+    [SerializeField] private Transform offerSoulCollectStartPoint;
+    [SerializeField] private float offerCheckTimer;
+    private DateTime offerCheckTime;
+
     private void Start()
     {
 
@@ -38,6 +42,8 @@ public class GameController : MonoBehaviour
         InitializeMenus();
 
         InitializeFireCheckTime();
+
+        InitializeOfferTime();
 
         LoadData();
 
@@ -103,6 +109,7 @@ public class GameController : MonoBehaviour
     {
         UpdateUI();
         HandleFireChances();
+        HandleOfferChecking();
     }
 
     private void LoadData()
@@ -148,6 +155,16 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
+
+        for (int i = 0; i < allOffersObjects.Count; i++)
+        {
+            if (allOffersObjects[i].GetID() == _ID)
+            {
+                allOffersObjects[i].TakeOffer();
+                CollectGatheredSouls(ConstantStrings.Instance.GetOfferSoulAmount(allOffersObjects[i].GetItemType()), offerSoulCollectStartPoint.position);
+                break;
+            }
+        }
     }
 
     private void OnRebuild(int _purchasePrice, string _ID)
@@ -164,7 +181,83 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void InitializeFireCheckTime()
+    private void InitializeOfferTime()
+    {
+        if (PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.offerCheckTime) != string.Empty)
+        {
+            long temp = Convert.ToInt64(PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.offerCheckTime));
+            offerCheckTime = DateTime.FromBinary(temp);
+
+            DateTime currentTime = DateTime.Now;
+            double numSecondsSinceLastOfferCheck = 0f;
+
+            TimeSpan timeSinceLastCheck = currentTime - offerCheckTime;
+            if (timeSinceLastCheck.TotalSeconds > double.MaxValue)
+            {
+                numSecondsSinceLastOfferCheck = double.MaxValue;
+            }
+            else
+            {
+                numSecondsSinceLastOfferCheck = timeSinceLastCheck.TotalSeconds;
+            }
+
+            if (numSecondsSinceLastOfferCheck > 0)
+            {
+                offerCheckTime = DateTime.Now.AddSeconds(offerCheckTimer);
+                PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.offerCheckTime, offerCheckTime.ToBinary().ToString());
+                CheckForOffer();
+            }
+
+        }
+        else
+        {
+            offerCheckTime = DateTime.Now.AddSeconds(offerCheckTimer);
+            PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.offerCheckTime, offerCheckTime.ToBinary().ToString());
+        }
+    }
+
+    private void HandleOfferChecking()
+    {
+        DateTime currentTime = DateTime.Now;
+        TimeSpan timeSinceLastCheck = currentTime - offerCheckTime;
+        double numSecondsSinceLastOfferCheck = timeSinceLastCheck.TotalSeconds;
+
+        if (numSecondsSinceLastOfferCheck >= 0f)
+        {
+            offerCheckTime = DateTime.Now.AddSeconds(offerCheckTimer);
+            PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.offerCheckTime, offerCheckTime.ToBinary().ToString());
+            CheckForOffer();
+        }
+    }
+
+    private void CheckForOffer()
+    {
+        Debug.LogError("CHECK FOR OFFER");
+        //see if we have an offer available already
+        bool offerAlreadyExists = false;
+        for (int i = 0; i < allOffersObjects.Count; i++)
+        {
+            if (!allOffersObjects[i].IsBuilt() && allOffersObjects[i].IsAvailableInStore())
+            {
+                offerAlreadyExists = true;
+            }
+        }
+
+        //find the next unbuilt offer and set it as available if there is nothing already available
+        if (!offerAlreadyExists)
+        {
+            for (int i = 0; i < allOffersObjects.Count; i++)
+            {
+                if (!allOffersObjects[i].IsBuilt() && !allOffersObjects[i].IsAvailableInStore())
+                {
+                    allOffersObjects[i].SetOfferAvailableInStore();
+                    break;
+                }
+            }
+        }
+    }
+
+        private void InitializeFireCheckTime()
     {
         if (PlayerPrefsSavingLoading.Instance.LoadString(ConstantStrings.fireCheckTime) != string.Empty)
         {
@@ -185,9 +278,9 @@ public class GameController : MonoBehaviour
                 numSecondsSinceLastFireCheck = timeSinceLastCheck.TotalSeconds;
             }
 
-            if (numSecondsSinceLastFireCheck > fireTimer)
+            if (numSecondsSinceLastFireCheck > 0)
             {
-                numTimesToCheck = Mathf.FloorToInt((float)(numSecondsSinceLastFireCheck / fireTimer));
+                numTimesToCheck = 1 + Mathf.FloorToInt((float)(numSecondsSinceLastFireCheck / fireTimer));
                 fireCheckTime = fireCheckTime.AddSeconds(numTimesToCheck * fireTimer);
                 PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.fireCheckTime, fireCheckTime.ToBinary().ToString());
                 DoFireCheck(numTimesToCheck);
