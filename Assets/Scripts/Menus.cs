@@ -155,6 +155,34 @@ public class Menus : MonoBehaviour
         waitingForMenuToClose = true;
     }
 
+    public void CloseButtonPressed()
+    {
+        switch (currentMenuType)
+        {
+            case MenuType.Construction:
+                constructionMenu.CloseMenu();
+                tableAnimator.SetBool("Open", false);
+                currentMenuType = MenuType.None;
+                break;
+
+            case MenuType.Detection:
+                detectionMenu.CloseMenu();
+                tableAnimator.SetBool("Open", false);
+                currentMenuType = MenuType.None;
+                break;
+
+            case MenuType.Offer:
+                offersMenu.CloseMenu();
+                tableAnimator.SetBool("Open", false);
+                currentMenuType = MenuType.None;
+                break;
+
+            default:
+                Debug.LogError("THIS SHOULDNT HAPPEN");
+                break;
+        }
+    }
+
     private bool CheckForAnimatingMenu()
     {
         if (constructionMenu.IsAnimating())

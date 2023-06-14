@@ -2159,7 +2159,7 @@ MonoBehaviour:
   soulsTarget: {fileID: 1216027370}
   fireTimer: 120
   offerSoulCollectStartPoint: {fileID: 1976824230}
-  offerCheckTimer: 5
+  offerCheckTimer: 120
 --- !u!1 &1348913288
 GameObject:
   m_ObjectHideFlags: 0

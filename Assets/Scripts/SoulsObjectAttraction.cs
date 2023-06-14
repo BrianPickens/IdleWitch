@@ -103,6 +103,7 @@ public class SoulsObjectAttraction : SoulsObjectBase
     {
         base.RebuildAttraction();
         SetTreesActive(false);
+        destroyedDisplay.SetActive(false);
         soulsDisplayHolder.SetActive(true);
         lastCollection = DateTime.Now;
         PlayerPrefsSavingLoading.Instance.SaveString(ConstantStrings.Instance.GetItemID(myItemType) + ConstantStrings.collectionTime, lastCollection.ToBinary().ToString());
